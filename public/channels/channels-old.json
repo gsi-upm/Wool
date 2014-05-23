@@ -1,0 +1,192 @@
+{
+	"responseHeader":
+	{
+		"status":0,
+		"QTime":3,
+		"params":
+		{
+			"q":"*:*",
+			"json.nl":"map",
+			"wt":"json",
+			"fq":
+			[
+				"Provenance:\"gsi\"",
+				"",
+				"Type:\"Fellow Grade\"",
+				""
+			],
+			"rows":"1000"
+		}
+	},
+		"response":
+		{
+			"numFound":5,
+			"start":0,
+			"docs":[
+			{
+				"id":"0",
+				"lmf.indexed":"2013-07-24T22:48:13.426Z",
+				"lmf.created":"2013-07-24T11:32:59.377Z",
+				"lmf.uri":"channels/twitter",
+				"lmf.type":["http://xmlns.com/foaf/0.1/Person"],
+				"name":["Twitter"],
+				"Province":[""],
+				"logo":["http://localhost:7878/images/twitter"],
+				"Type":["Channel"],
+				"Description":["This is the Twitter channel"],
+				"Ranking":["1"],
+				"Provenance":[""],
+				"Travel":[""],
+				"requirelogin": true,
+				"triggers": [
+					{
+						"uri": "channels/twitter/trigger/mention",
+						"nameSpanish": "Mención",
+						"nameEnglish": "Mention",
+						"name": {
+							"Spanish": "Mención",
+							"English": "Mention"
+							},
+						"configuration": {
+							"number": 0,
+							"configs": [
+							{
+								"type": "",
+								"title": {
+									"Spanish": "",
+									"English": ""
+								},
+								"values": {
+									"general": "",
+									"Spanish": "",
+									"English": ""
+								}
+							}
+							]
+						}
+					},
+					{
+						"uri": "channels/twitter/trigger/new-tweet",
+						"name": {
+							"Spanish": "Nuevo tweet",
+							"English": "New tweet"
+						},
+						"configuration": {
+							"number": 2,
+							"configs": [
+								{
+									"type": "checkbox",
+									"title": {
+										"Spanish": "Incluir",
+										"English": "Include"
+										},
+									"values": {
+										"general": ["retweet", "@mention"],
+										"Spanish": ["haces retweet", " haces una @mención"],
+										"English": ["you retweet", " you @mention"]
+									}									
+								},
+								{
+									"type": "radiobutton",
+									"title": {
+										"Spanish": "Más cosas",
+										"English": "More"
+										},
+									"values": {
+										"general": ["pretty", "ugly", "uglier"],
+										"Spanish": ["bonito", "feo", "más feo"],
+										"English": ["pretty", "ugly", "uglier"]
+									}	
+								}							
+							]
+						}
+					}
+					,
+					{
+						"uri": "channels/twitter/trigger/new-follower",
+						"name": {
+							"Spanish": "Nuevo seguidor",
+							"English": "New follower"
+							},
+						"configuration": {
+							"number": 0,
+							"configs": [
+							{
+								"type": "",
+								"title": {
+									"Spanish": "",
+									"English": ""
+								},
+								"values": {
+									"general": "",
+									"Spanish": "",
+									"English": ""
+								}
+							}
+							]
+						}
+					}
+				]
+			},
+			{
+				"id":"1",
+				"lmf.indexed":"2013-07-24T22:48:13.441Z",
+				"lmf.created":"2013-07-24T11:32:59.844Z",
+				"lmf.uri":"channels/gmail",
+				"lmf.type":["http://xmlns.com/foaf/0.1/Person"],
+				"name":["Gmail"],
+				"Province":[""],
+				"logo":["http://localhost:7878/images/gmail"],
+				"Type":["Channel"],
+				"Description":["This is the GMail channel"],
+				"Ranking":["1"],
+				"Provenance":[""],
+				"Travel":[""]
+			},
+			{
+				"id":"2",
+				"lmf.indexed":"2013-07-24T22:48:14.054Z",
+				"lmf.created":"2013-07-24T11:33:06.021Z",
+				"lmf.uri":"channels/dropbox",
+				"lmf.type":["http://xmlns.com/foaf/0.1/Person"],
+				"name":["Dropbox"],
+				"Province":[""],
+				"logo":["http://localhost:7878/images/dropbox"],
+				"Type":["Channel"],
+				"Description":["This is the Dropbox channel"],
+				"Ranking":["1"],
+				"Provenance":[""],
+				"Travel":[""]
+			},
+			{
+				"id":"3",
+				"lmf.indexed":"2013-07-24T22:48:13.9Z",
+				"lmf.created":"2013-07-24T11:33:03.051Z",
+				"lmf.uri":"channels/drive",
+				"lmf.type":["http://xmlns.com/foaf/0.1/Person"],
+				"name":["Google Drive"],
+				"Province":[""],
+				"logo":["http://localhost:7878/images/drive"],
+				"Type":["Channel"],
+				"Description":["This is the Google Drive channel"],
+				"Ranking":["1"],
+				"Provenance":[""],
+				"Travel":[""]
+			},
+			{
+				"id":"4",
+				"lmf.indexed":"2013-07-24T22:48:13.821Z",
+				"lmf.created":"2013-07-24T11:33:02.717Z",
+				"lmf.uri":"channels/calendar",
+				"lmf.type":["http://xmlns.com/foaf/0.1/Person"],
+				"name":["Google Calendar"],
+				"Province":[""],
+				"logo":["http://localhost:7878/images/calendar"],
+				"Type":["Channel"],
+				"Description":["This is the Google Calendar channel"],
+				"Ranking":["1"],
+				"Provenance":[""],
+				"Travel":[""]
+			}]
+		}
+}

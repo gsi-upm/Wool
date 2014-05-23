@@ -1,0 +1,62 @@
+{
+  "note": "This is a sample config file. You should change the mockDirectory to a more reasonable path.",
+  "mockDirectory": "/home/oaraque/RuleEditor/mock/",
+  "quiet": false,
+  "port": "7878",
+  "latency": 50,
+  "webServices": {
+    "channels": {
+      "mockFile": "channels.json",
+      "latency": 0,
+      "verbs": ["all"]
+    },
+    "second": {
+      "mockFile": "search.json",
+      "contentType": "foobar",
+      "verbs": ["post"]
+    },
+    "semantic": {
+      "mockFile": "semantic.json",
+      "latency": 0,
+      "verbs": ["all"]
+    },
+    "searchData": {
+      "mockFile": "searchdata.json",
+      "latency": 0,
+      "verbs": ["all"]
+    },
+    "images/twitter": {
+      "mockFile": "images/twitter.png",
+      "latency": 0,
+      "verbs": ["all"]
+    },
+    "images/gmail": {
+      "mockFile": "images/gmail.jpg",
+      "latency": 0,
+      "verbs": ["all"]
+    },
+    "images/dropbox": {
+      "mockFile": "images/dropbox.png",
+      "latency": 0,
+      "verbs": ["all"]
+    },
+    "images/calendar": {
+      "mockFile": "images/calendar.png",
+      "latency": 0,
+      "verbs": ["all"]
+    },
+    "images/drive": {
+      "mockFile": "images/drive.jpg",
+      "latency": 0,
+      "verbs": ["all"]
+    },
+    "nested/ace": {
+      "mockFile": "ace.json",
+      "verbs": ["post", "get"]
+    },
+    "var/:id": {
+      "mockFile": "xml/queen.xml",
+      "verbs": ["all"]
+    }
+  }
+}

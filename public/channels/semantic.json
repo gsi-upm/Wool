@@ -1,0 +1,22 @@
+[
+	{
+		"uri":"channels/twitter",
+		"sim":"0.8"
+	},
+	{
+		"uri":"channels/drive",
+		"sim":"0.8"
+	},
+	{
+		"uri":"channels/gmail",
+		"sim":"0.8"
+	},
+	{
+		"uri":"channels/dropbox",
+		"sim":"0.8"
+	},
+	{
+		"uri":"channels/calendar",
+		"sim":"0.8"
+	}
+]

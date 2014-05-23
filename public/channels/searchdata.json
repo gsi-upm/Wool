@@ -1,0 +1,72 @@
+{
+	"episteme.search.0.49664612486958504":
+		[
+			"{\"id\":0.49664612486958504",
+			"\"name\":\"Programming fellows\"",
+			"\"logo\":\"sphere\"",
+			"\"about\":\"Fellows needed for several kind of jobs. Minimun experience required.\"",
+			"\"jsonrpc\":\"2.0\"",
+			"\"changed\":\"false\"",
+			"\"completed\":\"false\"",
+			"\"total\":1",
+			"\"entityLastID\":1",
+			"\"registered\":\"Wed Jul 24 2013 13:17:11 GMT+0200 (CEST)\"",
+			"\"result\":[
+				{
+					\"id\":1",
+					"\"entityName\":\"\"",
+					"\"entityLogo\":\"\"",
+					"\"provenance\":\"gsi\"",
+					"\"isSemantic\":\"true\"",
+					"\"semantic\":[
+					{
+						\"skill\":\"Android\"",
+						"\"level\":\"beginner\"
+					}",
+					"{
+						\"skill\":\"C++\"",
+						"\"level\":\"beginner\"
+					}",
+					"{	
+						\"skill\":\"C++\"",
+						"\"level\":\"intermediate\"
+					}",
+					"{
+						\"skill\":\"C++\"",
+						"\"level\":\"expert\"
+					}]",
+				"\"solr\":[
+					{
+						\"name\":\"hidden\"",
+						"\"field\":\"Provenance\"",
+						"\"type\":\"comboBox\"",
+						"\"values\":[\"gsi\"]
+					}",
+					"{
+						\"name\":\"province\"",
+						"\"field\":\"Province\"",
+						"\"type\":\"autoComplete\"",
+						"\"values\":[]
+					}",
+					"{
+						\"name\":\"type\"",
+						"\"field\":\"Type\"",
+						"\"type\":\"comboBox\"",
+						"\"values\":[\"Fellow Grade\"]
+					}",
+					"{
+						\"name\":\"travel\"",
+						"\"field\":\"Travel\"",
+						"\"type\":\"comboBox\"",
+						"\"values\":[]
+					}",
+					"{
+						\"name\":\"freeText\"",
+						"\"field\":\"Description\"",
+						"\"type\":\"inputText\"",
+						"\"values\":[]
+					}]
+				}]
+			}"
+		]
+}
