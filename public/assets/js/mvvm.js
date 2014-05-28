@@ -1091,6 +1091,11 @@ $(document).ready(function () {
             that will be used into the inputs of the right channel
         */
         self.selectOutput = function() {
+            if(self.ifthisConfig['ewe:hasOutputParameter']()[0] == undefined || 
+                self.thenthatConfig['ewe:hasInputParameter']()[0] == undefined) {
+                self.outputs().push(0);
+                return;
+            }
             self.selectingOutput(true);
 
             $("#dialog-output").dialog({
