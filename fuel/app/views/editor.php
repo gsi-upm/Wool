@@ -44,7 +44,8 @@
 
      <div class="menuBarItem">
         <div class = "menuItemIcon ">
-                 <?php echo Asset::img('help.svg'); ?>
+                 <?php #echo Asset::img('help.svg'); ?>
+                 <?php echo Html::anchor('admin/', Asset::img('help.svg')) ?>
           </div>
         <?php echo Html::anchor('admin', 'Dashboard') ?>
       </div>
@@ -59,7 +60,8 @@
         <div class="menuBarItem">
           <div class="<?php echo Uri::segment(2) == $section_segment ? 'active' : '' ?> ">
             <div class = "menuItemIcon ">
-                      <?php echo Asset::img('help.svg'); ?>
+                      <?php #echo Asset::img('help.svg'); ?>
+                      <?php echo Html::anchor('admin/'.$section_segment, Asset::img('help.svg')) ?>
                 </div>
                 <?php echo Html::anchor('admin/'.$section_segment, $section_title) ?>
           </div>
@@ -250,7 +252,7 @@
     <div data-bind="visible: savingFinished()">
       <div>
       <button  class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only accept-button">
-        <a class="ui-button-text" href="http://homer.gsi.dit.upm.es/rule_editor/public/admin/rules">
+        <a class="ui-button-text" href="http://homer.gsi.dit.upm.es/wool/public/admin/rules">
           <span class="ui-button-text" data-bind="text: $root.lang().backToRules"></span>
         </a>
       </button>

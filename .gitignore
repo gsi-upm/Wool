@@ -1,4 +1,5 @@
 docs/
+fuel/app/logs/
 LICENSE
 composer.json
 composer.lock

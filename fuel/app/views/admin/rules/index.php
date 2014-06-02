@@ -1,5 +1,6 @@
 <div class=" titleText"><strong>Rules</strong></div>
-
+<br>
+<?php echo Html::anchor('editor', 'Add new Rule', array('class' => 'btn btn-success')); ?>
 <br>
 <?php if ($rules): ?>
 <table class="table table-striped">
@@ -15,7 +16,7 @@
 	</thead>
 	<tbody>
 <?php foreach ($rules as $rule): ?>		<tr>
-			<td><img class="droppable imageBox" src=<?php echo $logos[array_search($rule, $rules)] ?> ></td>
+			<td><img class="droppable imageBox" src=<?php echo /*$logos[array_search($rule, $rules)]*/ $rule['ifthis']['logo'] ?> ></td>
 
 			<td>When 
 				<span class="text-Description"><?php echo $rule['ifthis']['dcterms:title'] ?></span>
@@ -33,7 +34,7 @@
 
 			</td>
 
-			<td><img class="droppable imageBox" src=<?php echo $logos2[array_search($rule, $rules)] ?> ></td>
+			<td><img class="droppable imageBox" src=<?php echo /*$logos2[array_search($rule, $rules)]*/ $rule['thenthat']['logo'] ?> ></td>
 
 			<td>
 				<div class="optionsView">

@@ -218,7 +218,6 @@ $(document).ready(function () {
         "dcterms:description": "",
         "@type": "",
         "from_channel": "",
-        "ewe:hasInputParameter": {},
         "ewe:hasOutputParameter": [],
         "inputform": [],
     }
@@ -858,12 +857,14 @@ $(document).ready(function () {
         self.cancelEdition = function(){
             var dropIndex = 0;
             self.savingFinished(false);
-            self.containerLeft.container()[dropIndex].containerName('');
-            self.containerLeft.container()[dropIndex].containerLogo('');
-            self.cleanConfiguration(self.ifthisConfig);
-            self.containerRight.container()[dropIndex].containerName('');
-            self.containerRight.container()[dropIndex].containerLogo('');
-            self.cleanConfiguration(self.thenthatConfig);
+            // Sets Action id to blank for enabling edition
+            self.thenthatConfig['@id']('');
+            // self.containerLeft.container()[dropIndex].containerName('');
+            // self.containerLeft.container()[dropIndex].containerLogo('');
+            // self.cleanConfiguration(self.ifthisConfig);
+            // self.containerRight.container()[dropIndex].containerName('');
+            // self.containerRight.container()[dropIndex].containerLogo('');
+            // self.cleanConfiguration(self.thenthatConfig);
         }
         
         self.saveInputForm = function(container) {
@@ -1091,6 +1092,11 @@ $(document).ready(function () {
             that will be used into the inputs of the right channel
         */
         self.selectOutput = function() {
+            // Checks that the Action has input parameter
+            if(self.thenthatConfig['ewe:hasInputParameter'] == undefined) {
+                return;
+            }
+            // In case the input parameter does not exist, cancels the function
             if(self.ifthisConfig['ewe:hasOutputParameter']()[0] == undefined || 
                 self.thenthatConfig['ewe:hasInputParameter']()[0] == undefined) {
                 self.outputs().push(0);
@@ -1208,6 +1214,20 @@ $(document).ready(function () {
             });
         }
 
+
+        self.testbackend = function() {
+            $.ajax({
+                type: 'get',
+                url: "http://homer.gsi.dit.upm.es:8080/wool/rest/spin",
+                data: {},
+                dataType: 'json',
+                ContentType: 'text/html; charset=UTF-8',
+                success: function(allData) {
+                    console.log(allData)
+
+                }
+            });
+        }
 
         /*
         *   Cambio la funcion doSearch por esta, mas adecuada para rule editor
@@ -1329,6 +1349,10 @@ $(document).ready(function () {
 
                     ko.mapping.fromJS(ruleData.ifthis, self.ifthisConfig);
                     ko.mapping.fromJS(ruleData.thenthat, self.thenthatConfig);
+
+                    // Sets the id of the Action container to blank for enabling edition
+                    self.thenthatConfig['@id']('');
+
                     var channelData;
                     var channelDataOffset;
                     var dropIndex = 0;
@@ -1781,7 +1805,7 @@ $(document).ready(function () {
                 self.filter("");
                 self.focusBar(true);
             });
-        }).run('rule_editor/public/editor#/editor'); //END SAMMY
+        }).run('wool/public/editor#/editor'); //END SAMMY
         // </CLIENT SIDE ROUTES>
     } //End model
     // Activates knockout.js

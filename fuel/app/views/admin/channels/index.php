@@ -1,5 +1,7 @@
 <div class=" titleText"><strong>Channels</strong></div>
 
+<?php #echo Html::anchor('editor', 'Add new Rule', array('class' => 'btn btn-success')); ?>
+
 <br>
 <?php if ($channels): ?>
 <table class="table table-striped">
@@ -38,6 +40,6 @@
 <p>No Channels.</p>
 
 <?php endif; ?><p>
-	<?php echo Html::anchor('editor', 'Add new Rule', array('class' => 'btn btn-success')); ?>
-
+	
+<?php #echo Html::anchor('editor', 'Add new Rule', array('class' => 'btn btn-success')); ?>
 </p>

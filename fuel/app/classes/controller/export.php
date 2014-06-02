@@ -13,11 +13,17 @@ class Controller_Export extends Controller_Rest
 		}
 		try {
 			$rule = RuleEdit::find_rules($id);
-			$deleted = RuleEdit::delete_rule($id);
+			// $deleted = RuleEdit::delete_rule($id);
+
+			// Data that the SPIN Motor will need
+			$rule_data = array();
 
 			// Template selection based on number of parameters needed
-			$n_parameters = count($rule['thenthat']['ewe:hasInputParameter']);
-			var_dump($n_parameters);
+			$n_parameters = 0;
+			if(isset($rule['thenthat']['ewe:hasInputParameter']))
+			{
+				$n_parameters = count($rule['thenthat']['ewe:hasInputParameter']);
+			}			
 			$template = TemplateSpin::get_template($n_parameters);
 			$rule['ewe_spin'] = $template['spin'];
 			switch ($n_parameters) {
@@ -35,13 +41,15 @@ class Controller_Export extends Controller_Rest
 					$rule['ewe_spin'] = str_replace('?actionP1Title', '"'.$rule['thenthat']['ewe:hasInputParameter'][0]['dcterms:title'].'"', $rule['ewe_spin']);
 					$rule['ewe_spin'] = str_replace('?eventP1Title', '"'.$rule['ifthis']['ewe:hasOutputParameter'][$indexOfOutput]['dcterms:title'].'"' , $rule['ewe_spin']);
 
-					
-					
 				default:
 					$rule['ewe_spin'] = str_replace('?actionTitle', '"'.$rule['thenthat']['dcterms:title'].'"', $rule['ewe_spin']);
 					$rule['ewe_spin'] = str_replace('?actionDescription', '"'.$rule['thenthat']['dcterms:description'].'"', $rule['ewe_spin']);
 					$rule['ewe_spin'] = str_replace('?eventTitle', '"'.$rule['ifthis']['dcterms:title'].'"' , $rule['ewe_spin']);
 					$rule['ewe_spin'] = str_replace('?eventDescription', '"'.$rule['ifthis']['dcterms:description'].'"' , $rule['ewe_spin']);
+
+					// Insert data for SPIN Motor
+					$rule_data['event_title'] = $rule['ifthis']['dcterms:title'];
+					$rule_data['event_description'] = $rule['ifthis']['dcterms:description'];
 					
 					break;
 			}
@@ -55,26 +63,28 @@ class Controller_Export extends Controller_Rest
 			// $rule['ewe_spin'] = str_replace('?actionID', '"http://gsi.dit.upm.es/wool/'.rand().'"', $rule['ewe_spin']);
 
 
-			$saved = RuleEdit::save_rule($rule);
-
+			// $saved = RuleEdit::save_rule($rule);
+			var_dump($rule['ewe_spin']);
 			// Export Rule to SPIN Motor module
-			echo "Entered post rule in export<br>";
-			$this->make_request();
+			$this->make_request($rule['ewe_spin'], $rule_data);
 
 		} catch (Exception $e) {
 			return $this->response("ERROR. Rule not found.<br>".$e);
 		} 
 		
-		return $this->response($rule['ewe_spin']);
+		// return $this->response($rule['ewe_spin']);
 		
 	}
 
-	private function make_request() 
+	private function make_request($sparql, $rule_data) 
 	{
-		echo "tree powers activated<br>";
-		$curl = Request::forge( 'http://homer.gsi.dit.upm.es:8080/wool/rest/spin', 'curl');
+		$curl = Request::forge( 'http://homer.gsi.dit.upm.es:8080/wool/spin/motor', 'curl');
+		$curl->set_method('post');
+		$curl->set_params(array('type'=>"SPARQL", 'sentence'=>$sparql, 
+			'event_title'=>$rule_data['event_title'], 'event_description'=>$rule_data['event_description']));
 		$curl->execute();
-		$result = $curl->response();
+
+		$result = $curl->response()->body;
 		var_dump($result);
 	}
 

@@ -18,16 +18,18 @@ class Controller_Admin_Rules extends Controller_Admin{
 			if($rule_channel_id != '')
 			{
 				$result = Channel::get_channel_logo($rule_channel_id);
+				$data['rules'][$rule]['ifthis']['logo'] = $result;
 				array_push($data['logos'], $result);
 			}
 			if($rule_channel_id2 != '')
 			{
 				$result = Channel::get_channel_logo($rule_channel_id2);
+				$data['rules'][$rule]['thenthat']['logo'] = $result;
 				array_push($data['logos2'], $result);
 			}
 		}
 		// Sorts the data in order to show it more naturally
-		arsort($data['rules']);
+		sort($data['rules']);
 		arsort($data['logos']);
 		arsort($data['logos2']);
 		$this->template->title = "Rules";

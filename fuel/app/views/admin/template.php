@@ -37,7 +37,8 @@
 	    <div  id = "menuBar" data-bind="visible: true">
 	    <div class="menuBarItem">
 	    	<div class = "menuItemIcon ">
-                 <?php echo Asset::img('help.svg'); ?>
+                 <?php #echo Asset::img('help.svg'); ?>
+                 <?php echo Html::anchor('admin/', Asset::img('help.svg')) ?>
       		</div>
     		<?php echo Html::anchor('admin', 'Dashboard') ?>
     	</div>
@@ -52,7 +53,8 @@
 				<div class="menuBarItem">
 					<div class="<?php echo Uri::segment(2) == $section_segment ? 'active' : '' ?> ">
 						<div class = "menuItemIcon ">
-	                 		<?php echo Asset::img('help.svg'); ?>
+	                 		<?php #echo Asset::img('help.svg'); ?>
+	                 		<?php echo Html::anchor('admin/'.$section_segment, Asset::img('help.svg')) ?>
 	      				</div>
 	      				<?php echo Html::anchor('admin/'.$section_segment, $section_title) ?>
 					</div>
