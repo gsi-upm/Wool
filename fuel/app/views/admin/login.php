@@ -1,5 +1,5 @@
-<div class="row">
-	<div class="col-md-3">
+<div class="row login">
+	<div class="col-md">
 		<?php echo Form::open(array()); ?>
 
 			<?php if (isset($_GET['destination'])): ?>

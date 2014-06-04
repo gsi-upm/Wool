@@ -45,7 +45,7 @@
      <div class="menuBarItem">
         <div class = "menuItemIcon ">
                  <?php #echo Asset::img('help.svg'); ?>
-                 <?php echo Html::anchor('admin/', Asset::img('help.svg')) ?>
+                 <?php echo Html::anchor('admin/', Asset::img('house.svg', array('class'=>'menuItemIcon'))) ?>
           </div>
         <?php echo Html::anchor('admin', 'Dashboard') ?>
       </div>
@@ -61,7 +61,9 @@
           <div class="<?php echo Uri::segment(2) == $section_segment ? 'active' : '' ?> ">
             <div class = "menuItemIcon ">
                       <?php #echo Asset::img('help.svg'); ?>
-                      <?php echo Html::anchor('admin/'.$section_segment, Asset::img('help.svg')) ?>
+                      <?php #echo Html::anchor('admin/'.$section_segment, Asset::img('help.svg')) ?>
+                      <?php echo Html::anchor('admin/'.$section_segment, Asset::img($section_segment.'.svg', 
+                        array('class'=>'menuItemIcon'))) ?>
                 </div>
                 <?php echo Html::anchor('admin/'.$section_segment, $section_title) ?>
           </div>
@@ -80,8 +82,8 @@
     </div>
 
     <?php if($current_user): ?>
-    <div class="navbar-collapse collapse menuBarItem">
-        <ul class="nav navbar-nav pull-right">
+    <!-- <div class="navbar-collapse collapse menuBarItem">
+       <ul class="nav navbar-nav pull-right">
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $current_user->username ?> <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -89,7 +91,16 @@
             </ul>
           </li>
         </ul>
-      </div>
+      </div>  -->
+     <div class="menuBarItem">
+            <div class = "menuItemIcon ">
+                      <?php #echo Asset::img('help.svg'); ?>
+                      <?php #echo Html::anchor('admin/'.$section_segment, Asset::img('help.svg')) ?>
+                      <?php echo Html::anchor('admin/logout', Asset::img('logout.svg', 
+                        array('class'=>'menuItemIcon'))) ?>
+                </div>
+                <?php echo Html::anchor('admin/logout', 'Logout') ?>
+          </div>
     <?php endif;?>      
     
     <!--
@@ -124,12 +135,16 @@
 <div class="dropContainer" data-bind="css: { offerContainer: page() == 0 }" >
     <!-- COMPOSER -->
     <!-- ko if: option() == 0 -->
+    <div>
+        <span class="signLeft" data-bind="css: {'margin-left':lang().marg1} ,text: lang().s1"></span>
+        <?php echo Asset::img('arrow.png', array('class'=>'arrow')); ?>
+        <span class="signRight" data-bind=" css: {'margin-left': lang().marg2},text: lang().s2"></span>
+    </div>
+    <!-- <img class="img" data-bind="attr: { 'src': lang().i1 }"> -->
     <div id="droppableElementsLeft" data-bind="visible: true && !savingFinished()" >
-
         <div data-bind="foreach: $root.containerLeft.container">
 	 <div class="droppable droppableCompany company droppableContainerLeft" class="class2" id="droppable1" data-bind="visible: $root.page() > 0, attr: {'name': $data, 'index': $index},  css: { 'stateDisabled': $root.currentEntity() != $index(), 'selected': $root.currentEntity() == $index(), 'draggableContainerLeft': $data.containerName() != '', 'draggableEmpty': $data.containerName() == ''}">
 
-           
 	   <!-- ko if: $data.containerName() == '' -->
    	   <div class ="droppableText"> <span data-bind="text: $root.lang().d2+' '+$root.lang().channel+' '+($index()+1)"></span> </div>
 	   <!-- /ko -->
@@ -150,7 +165,9 @@
 	 </div>
 	</div>  
     <div class="lines" id="lines" data-bind="if: page() == 1">
-		  <img class="img" data-bind="attr: { 'src': lang().i1 }">
+		   <img class="img" data-bind="attr: { 'src': lang().i1 }, 
+        visible: $root.ifthisConfig['@id']() == ''">
+    
 	  </div>
 
     <!-- ko if: containerLeft.container()[0].containerName() != '' -->
@@ -211,7 +228,8 @@
    </div>
   </div>  
     <div class="lines" id="lines" data-bind="if: page() == 1">
-      <img class="img" data-bind="attr: { 'src': lang().i1 }">
+      <img class="img" data-bind="attr: { 'src': lang().i1 }, 
+        visible: $root.thenthatConfig['@id']() == '' && $root.ifthisConfig['@id']() != ''">
     </div>
 
     <!-- ko if: containerRight.container()[0].containerName() != '' -->
@@ -546,8 +564,6 @@
 
   <div class="page_navigation" data-bind="visible: $root.viewData().length > 0"></div>
   <div class="page_navigation_text" data-bind="if: page() == 1">
-    <span data-bind="visible: semanticOrder() == false && $root.viewData().length > 0 , text: lang().m6"></span>
-    <span data-bind="visible: semanticOrder() == true && $root.viewData().length > 0, text: lang().m7"></span>
   </div>
 
   <div class="message" data-bind="visible: filteredData().length < 1 && filter() != '' && page() == '1'">
@@ -583,41 +599,6 @@
 </div>	
 
 
-
-
-<!-- RECOMMENDED CONTAINER -->
-<div class="recommended" data-bind="visible: !editionFinished() && $root.viewData().length > 0">
-  <div class="lines" id="recommendedLines" data-bind="visible: page() == 1 && status() == 1">
-      <p class="recommendedText" data-bind="text: lang().recommended "></p>
-  </div>
-  <div id="draggableElements" data-bind="visible: page() != 0 || status() != 1">
-    <!-- RECOMMENDED RESULT -->
-    <!-- ko foreach: $root.recommendedData -->
-    <!-- ko if: $index() < 5 -->
-
-      <div id="draggable" class="draggable draggableCompanies recommendedCompanies" data-bind="attr: { 'name': $data.name, 'province': $data.Province},css: { clickableRecommended: $root.option() == 1}">
-        <div class="draggableInfo" data-bind="click: $root.activateHelp.bind($data,'company',''), clickBubble: false
-           ,attr: { 'title': '<b>'+$data.name()+'</b><br>Ranking: '+$data.Ranking()}">?</div>
-        <div class="companyMedal"></div>
-        <div class="logoContainer">
-          <!-- ko if: $data.logo != undefined -->
-          <img class="defaultLogo" src="images/default.png" data-bind="attr: {src: $data.logo}"/>
-          <!-- /ko -->
-          <!-- ko if: $data.logo == undefined -->
-          <img class="defaultLogo" src="images/default.png"/>
-          <!-- /ko -->
-        </div>
-        <div class="textContainer">
-          <p class="draggableText" data-bind="text: $data.name"></p>
-        </div>
-      </div>
-
-    <!-- /ko -->
-     <!-- /ko -->
-    <!-- /RECOMMENDED RESULT -->
-  </div>
-</div>
-<!-- /RECOMMENDED CONTAINER -->
 
 
 

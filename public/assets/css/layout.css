@@ -113,7 +113,7 @@ body {
 }
 /*MENU BAR*/
 #menuBar{
-  position:absolute; bottom:0; 
+  position:absolute; 
   margin-left:250px;
   width: 100%;
   max-width: 620px;
@@ -125,6 +125,7 @@ body {
   width:120px;
   float:left;
   text-align: center;
+  margin-top: 5px;
 }
 .selectedOffer{
 
@@ -179,7 +180,7 @@ body {
 .menuItemIcon{
   margin: 0 auto;
   height:50px;
-  width:80px;
+  
 }
 .menuItemText{
   border-left: dotted 1px #CCC;
@@ -1458,6 +1459,8 @@ height: 80px;
   width: auto;
   border-radius: 8px 8px 8px 8px; border-width: 8px 8px 8px 8px;
   border-color: #66A67C;
+  font-size: 1.2em;
+  font-family: "helvetica-neue-lt-std-35-thin";
 }
 
 .ui-dialog-titlebar {
@@ -1563,3 +1566,59 @@ height: 80px;
   border: 1px solid #C8BFC4;
   border-radius: 5px 5px 5px 5px; border-width: 2.5px 2.5px 2.5px 2.5px;
 }
+
+.footerInfo {
+  text-align: center;
+}
+
+.paramsFooter {
+  text-align: right;
+}
+
+.mainLayout {
+  margin-top:90px;
+//background-image: url(../img/dotted.png);
+float:left;
+width:100%;
+
+background-color: #F0F0F0;
+z-index:-100;
+}
+
+.generalLayout{
+  width:900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#mainLayoutElements{
+  border-top: 1px solid #ddd;
+  display: inline-block;
+  position:relative;
+  padding-bottom: 40px;
+  min-height: 250px;
+  font-size: 1.2em;
+}
+
+.login {
+  margin: 20px;
+}
+.signLeft {
+  margin-left: 0px;
+  margin-right: 20px;
+  font-size: 3em;
+  font-family: "helvetica-neue-lt-std-35-thin";
+}
+
+.signRight {
+  margin-left: 0px;
+  font-size: 3em;
+  font-family: "helvetica-neue-lt-std-35-thin";
+}
+
+.arrow {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+  
