@@ -147,7 +147,7 @@
     <div id="droppableElementsLeft" data-bind="visible: true && !savingFinished()" >
         <div data-bind="foreach: $root.containerLeft.container">
 	 <div class="droppable droppableCompany company droppableContainerLeft" class="class2" id="droppable1" data-bind="visible: $root.page() > 0, attr: {'name': $data, 'index': $index},  
-      css: { 'stateDisabled': $root.ifthisConfig['@id']() != '', 'selected': $root.currentEntity() == $index(), 'draggableContainerLeft': $data.containerName() != '', 'draggableEmpty': $data.containerName() == ''}">
+      css: { 'stateDisabled': false, 'selected': $root.currentEntity() == $index(), 'draggableContainerLeft': $data.containerName() != '', 'draggableEmpty': $data.containerName() == ''}">
 
 	   <!-- ko if: $data.containerName() == '' -->
    	   <div class ="droppableText"> <span data-bind="text: $root.lang().d2+' '+$root.lang().channel+' '+($index()+1)"></span> </div>
