@@ -14,6 +14,8 @@ endPointSavedRule = "http://homer.gsi.dit.upm.es/wool/public/rules/rule/";
 
 endPointChannels = "http://homer.gsi.dit.upm.es/wool/public/channel/channels.json";
 
+endPointTabs = "http://homer.gsi.dit.upm.es/wool/public/space/spaces";
+
 // URLs belonging to rule editor
 mockCandidates = "http://homer.gsi.dit.upm.es/RuleEditor/channels/channels";
 

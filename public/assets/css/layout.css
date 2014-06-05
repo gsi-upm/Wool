@@ -349,14 +349,19 @@ z-index:-100;
 .dragContainer{
   width:880px;
   margin: 0 auto;
+  margin-left: 280px;
   text-align: center;
+  display: flex;
 }
 #draggableElements{
-  border-top: 1px solid #ddd;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #E6E6E6;
   display: inline-block;
   width:750px;
   position:relative;
   padding-bottom: 40px;
+  margin-bottom: 20px;
 }
 #draggableElements.main{
   min-height: 250px;
@@ -554,13 +559,14 @@ height: 30px;
 /*CONTROL CONTAINER*/
 .controlContainer{
 width:880px;
-height:55px;
+/*height:55px;*/
 margin: 0 auto;
+margin-top: 40px;
 text-align: center;
 }
 
 #resultsNumberBar{
-margin-top: 30px;
+/*margin-top: 30px;*/
 text-align: left;
 margin-left: 70px;
 }
@@ -1621,4 +1627,65 @@ z-index:-100;
   margin-right: 50px;
 }
 
-  
+.spaceButtons {
+}
+
+.channelTabs {
+  background-color: auto;
+  float: left;
+  display: table;
+  text-align: right;
+  margin-top: 5px;
+}
+.greenTab {
+        cursor:pointer;
+  -moz-box-shadow:inset 0px 1px 0px 0px #088A08;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #088A08;
+  box-shadow:inset 0px 1px 0px 0px #088A08;
+  background-color:#04B404;
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:10px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border:1px solid #088A08;
+  display:inline-block;
+  color:#e6e6e6;
+  font-family:arial;
+  font-size:14px;
+  font-weight:bold;
+  padding:3px 14px;
+  text-decoration:none;
+  text-shadow:1px 1px 0px rgb(156, 156, 156);
+  width: 140px;
+}
+.greenTabSelected {
+  cursor:pointer;
+  -moz-box-shadow:inset 0px 1px 0px 0px #04B486;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #04B486;
+  box-shadow:inset 0px 1px 0px 0px #04B486;
+  background-color:#04B486;
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:10px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border:1px solid #04B486;
+  display:inline-block;
+  color:#fff;
+  font-family:arial;
+  font-size:14px;
+  font-weight:bold;
+  padding:3px 14px;
+  text-decoration:none;
+  text-shadow:1px 1px 0px rgb(156, 156, 156);
+  width: 140px;
+}
+.greenTab:hover {
+  background-color: #088A08;
+        opacity:1;
+}
+.greenTab:active {
+  position:relative;
+  top:1px;
+}

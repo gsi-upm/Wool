@@ -305,7 +305,7 @@ $(document).ready(function () {
         self.loading = ko.observable(false);
         self.existPagination = ko.observable(false);
         self.filter = ko.observable();
-        filterType = ko.observable("name");
+        self.filterType = ko.observable("space");
         self.availableCategories = ko.observableArray();
         self.companiesData = ko.mapping.fromJS(templateJson);
         self.viewData = ko.mapping.fromJS(templateJson);
@@ -372,6 +372,9 @@ $(document).ready(function () {
 
         // Used when saving the rule is finished
         self.savingFinished = ko.observable(false);
+
+        self.spaces = ko.mapping.fromJS(templateJson);
+        self.selectedTab = ko.observable();
         
         /* Añadido de travel */
         self.Travel = ko.observableArray(["true","false"]);
@@ -411,7 +414,7 @@ $(document).ready(function () {
                 return data;
             } else {
                 return ko.utils.arrayFilter(data, function (item) {
-                    var type = filterType();	
+                    var type = self.filterType();	
                     return ko.utils.stringContains(item[type]().toString(), filter);
                     //return true;
                 });
@@ -546,6 +549,7 @@ $(document).ready(function () {
             self.offerDetails([]);
             self.offerDetailsSkills([]);
             self.helpText(false);
+            self.channelDetails(ko.mapping.fromJS(value))
             /*
             if (type == "offer") {
                 $.ajax({
@@ -807,6 +811,13 @@ $(document).ready(function () {
         //         })
         //     });
         // };
+
+
+        // Called when a tab is selected
+        self.selectSpace = function(space) {
+            self.filter(space);
+            self.selectedTab(space);
+        }
 
         // Saves the edited rule into the server
         self.saveRule = function() {
@@ -1258,6 +1269,22 @@ $(document).ready(function () {
                     $(".dragContainer").hide().fadeIn();
                     self.reload();
 
+                }
+            });
+
+            $.ajax({
+                type: 'get',
+                url: endPointTabs,
+                data: {},
+                dataType: 'json',
+                ContentType: 'text/html; charset=UTF-8',
+                success: function(data) {
+                    console.log(data)
+                    //self.spaces = ko.mapping.fromJS(data['spaces']);
+                    ko.mapping.fromJS(data['spaces'], self.spaces);
+                    //self.selectedTab(self.spaces()[0])
+
+                    self.reload();
                 }
             });
             // $.ajax({

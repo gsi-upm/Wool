@@ -28,17 +28,21 @@ class Controller_Channel extends Controller_Rest
 			$logo = $channels[$index]['@graph'][$position]['foaf:logo'];
 			$channels[$index]['logo'] = $logo;
 
+			$space = $channels[$index]['@graph'][$position]['space'];
+			$channels[$index]['space'] = $space;
+
 			$channels[$index]['weight'] = 1;
 			$channels[$index]['Ranking'] = '1';
 
 			array_push($channels_ids, $channels[$index]['@graph'][$position]['@id']);
 				
 		}
-		return $this->response(array(
+		$response = array(
 			'number_channels' => $count, 
 			'id_channels' => $channels_ids,
 			'channels' => $channels,
-		));
+		);
+		return Response::forge(json_encode($response));
 	}
 
 }

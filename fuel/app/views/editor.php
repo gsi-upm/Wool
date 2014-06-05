@@ -73,9 +73,9 @@
     ?>
 
     <div  class = "menuBarItem" data-bind="css: { inactive: status() < -1, selected: help()}">
-      <a  href="#" data-bind="click: $root.activateHelp.bind($data,'help','')">
+      <a  href="https://github.com/gsi-upm/Wool/wiki">
       <div class = "menuItemIcon ">
-                    <?php echo Asset::img('help.svg'); ?>
+                    <?php echo Asset::img('help-black.svg', array('class'=>'menuItemIcon')); ?>
       </div>
       <div class = "menuItemText"><span data-bind="text: lang().m5 "></span></div>
       </a>
@@ -136,14 +136,18 @@
     <!-- COMPOSER -->
     <!-- ko if: option() == 0 -->
     <div>
-        <span class="signLeft" data-bind="css: {'margin-left':lang().marg1} ,text: lang().s1"></span>
-        <?php echo Asset::img('arrow.png', array('class'=>'arrow')); ?>
-        <span class="signRight" data-bind=" css: {'margin-left': lang().marg2},text: lang().s2"></span>
+        <!-- <span class="signLeft" data-bind="css: {'margin-left':lang().marg1} ,text: lang().s1"></span> -->
+        <?php #echo Asset::img('arrow.png', array('class'=>'arrow')); ?>
+        <?php #$asset = Asset::find_file('arrow.png', 'img'); 
+        #$path = dirname($asset); echo $path;?>
+        <img class="img" data-bind="attr: { 'src': lang().i8 }">
+        <!-- <span class="signRight" data-bind=" css: {'margin-left': lang().marg2},text: lang().s2"></span> -->
     </div>
     <!-- <img class="img" data-bind="attr: { 'src': lang().i1 }"> -->
     <div id="droppableElementsLeft" data-bind="visible: true && !savingFinished()" >
         <div data-bind="foreach: $root.containerLeft.container">
-	 <div class="droppable droppableCompany company droppableContainerLeft" class="class2" id="droppable1" data-bind="visible: $root.page() > 0, attr: {'name': $data, 'index': $index},  css: { 'stateDisabled': $root.currentEntity() != $index(), 'selected': $root.currentEntity() == $index(), 'draggableContainerLeft': $data.containerName() != '', 'draggableEmpty': $data.containerName() == ''}">
+	 <div class="droppable droppableCompany company droppableContainerLeft" class="class2" id="droppable1" data-bind="visible: $root.page() > 0, attr: {'name': $data, 'index': $index},  
+      css: { 'stateDisabled': $root.ifthisConfig['@id']() != '', 'selected': $root.currentEntity() == $index(), 'draggableContainerLeft': $data.containerName() != '', 'draggableEmpty': $data.containerName() == ''}">
 
 	   <!-- ko if: $data.containerName() == '' -->
    	   <div class ="droppableText"> <span data-bind="text: $root.lang().d2+' '+$root.lang().channel+' '+($index()+1)"></span> </div>
@@ -205,7 +209,8 @@
     <div id="droppableElementsRight" data-bind="visible: true && !savingFinished()" >
 
         <div data-bind="foreach: $root.containerRight.container">
-   <div class="droppable droppableCompany company droppableContainerRight" class="class2" id="droppable1" data-bind="visible: $root.page() > 0, attr: {'name': $data, 'index': $index+1}, css: { 'stateDisabled': $root.currentEntity() != $index(), 'selected': $root.currentEntity() == $index(), 'draggableContainerRight': $data.containerName() != '', 'draggableEmpty': $data.containerName() == ''}">
+   <div class="droppable droppableCompany company droppableContainerRight" class="class2" id="droppable2" data-bind="visible: $root.page() > 0, attr: {'name': $data, 'index': $index+1}, 
+      css: {  'selected': $root.currentEntity() == $index(), 'draggableContainerRight': $data.containerName() != '', 'draggableEmpty': $data.containerName() == ''}">
 
            
      <!-- ko if: $data.containerName() == '' -->
@@ -414,26 +419,43 @@
     <div id="filterBtn" data-bind="visible: false">
     <a class="category" href="#" data-filter-by-category="true"> <span data-bind="text: lang().b2"></span> </a>
     </div>
-    <div id="resultsNumberBar" data-bind="if: page() == 1">
-	<!-- ko if: filteredData().length != 1 -->
-	<div id = "mBarText" data-bind="text: filteredData().length + ' ' + lang().m4, visible: page() == 1" ></div>
-	<!-- /ko -->
-	<!-- ko if: filteredData().length == 1 -->
-	<div id = "mBarText" data-bind="text: filteredData().length + ' ' + lang().m4b, visible: page() == 1" ></div>
-	<!-- /ko -->
-    </div>
+    
+    <!-- Needed for the searching bar 
     <div id="filterBar" data-bind="if: page() == 1">
-    <!-- <input id="search" data-bind="attr: { 'placeholder': lang().b1 }, value: filter, hasfocus: focusBar, valueUpdate: 'afterkeydown'"/>-->
+    <!-- <input id="search" data-bind="attr: { 'placeholder': lang().b1 }, value: filter, hasfocus: focusBar, valueUpdate: 'afterkeydown'"/>
     <input id="search" data-bind="attr: { 'placeholder': lang().b1 }, value: filter, valueUpdate: 'afterkeydown'"/>
+    </div> -->
+    <!-- <div class="spaceButtons">
+      <button class="greenButton" data-bind="text: lang().spaceInternet, click: selectSpace.bind($data,'web_service')"></button>
+      <button class="greenButton" data-bind="text: lang().spaceGSI, click: selectSpace.bind($data,'located/lab_gsi')"></button>
+      <button class="greenButton" data-bind="text: lang().spaceHome,click: selectSpace.bind($data,'located/home')"></button>
+    </div> -->
+    <div id="resultsNumberBar" data-bind="if: page() == 1">
+      <!-- ko if: filteredData().length != 1 -->
+      <div id = "mBarText" data-bind="text: filteredData().length + ' ' + lang().m4, visible: page() == 1" ></div>
+      <!-- /ko -->
+      <!-- ko if: filteredData().length == 1 -->
+      <div id = "mBarText" data-bind="text: filteredData().length + ' ' + lang().m4b, visible: page() == 1" ></div>
+      <!-- /ko -->
     </div>
     <div class="lines" id="Selectlines" data-bind="if: ($root.page() == 0 && $root.status() == 0) && $root.currentSearches.values().length > 0">
         <span class="headingText" data-bind="text: lang().pickSearch "></span> <span class="colorBlue headingText" data-bind="text: lang().search "></span>
     </div>
+    
 
 </div>
 
 <!-- DRAGGABLES -->
+
 <div class="dragContainer" data-bind="visible: !editionFinished()">
+
+  <div class="channelTabs">
+    <div class="spaceButtons" data-bind="foreach: spaces">
+      <div><button class="greenTab" data-bind="attr: {id: $data}, text: $root.lang()[$data], click: $root.selectSpace.bind($data, $data), 
+          css: {greenTabSelected: $root.selectedTab() == $data}"></button></div>
+    </div>
+  </div>
+  
 <div id="leftArrow" data-bind="visible: existPagination()">
   <a class="prevBtn" href="">
     <img id="larrow" src="images/larrow.png" />
@@ -542,7 +564,7 @@
     <!-- ko if: $root.page() == 1 && $root.option() == 0 -->
     <div id="draggable" class="draggable draggableCompanies semanticCompanies" data-bind="attr: { 'name': $data.name, 'province': $data.Province}">
 
-      <div class="draggableInfo" data-bind="click: $root.activateHelp.bind($data,'company',''), clickBubble: false
+      <div class="draggableInfo" data-bind="click: $root.activateHelp.bind($data,'company',$data), clickBubble: false
            ,attr: { 'title': '<b>'+$data.name()+'</b><br>Similarity: '+$data.weight() }">?</div>
       
       <div class="companyMedal"></div>
@@ -605,9 +627,8 @@
 <div data-bind="autoPaginate: filteredData"></div>
 <div data-bind="autoPaginate: $root.currentSearches"></div>
 
-
-
 </div>
+
 <!-- /MAIN CONTAINER -->
 
 <div id="footer">
@@ -633,43 +654,6 @@
         -->
         </div>
         <!--CHANNEL DETAILS MODAL-->
-        <div>
-          <h1><span data-bind="text: $root.lang().channelHelp1"></span></h1>
-          <div class="logoContainer">
-            <!-- ko if: $data.logo != undefined -->
-            <img class="defaultLogo" src="images/default.png" data-bind="attr: {src: $data.logo[0]()}"/>
-            <!-- /ko -->
-            <!-- ko if: $data.logo == undefined -->
-            <img class="defaultLogo" src="images/default.png"/>
-            <!-- /ko -->
-          </div>
-        </div>
-        <div data-bind="foreach: offerDetails">
-          <h1><span data-bind="text: $root.lang().b20"></h1>
-          <div class="logoContainer">
-          <!-- ko if: $data.logo != undefined -->
-          <img class="defaultLogo" src="images/default.png" data-bind="attr: {src: '.'+$data.logo.value()}"/>
-          <!-- /ko -->
-          <!-- ko if: $data.logo == undefined -->
-          <img class="defaultLogo" src="images/default.png"/>
-          <!-- /ko -->
-          </div>
-          <h2><span data-bind="text: $root.lang().b6"></h2>
-          <p><span data-bind="text: $data.name.value"></span></p>
-          <h2><span data-bind="text: $root.lang().b13"></h2>
-          <p><span data-bind="text: $data.detail.value"></span></p>
-          <h2><span data-bind="text: $root.lang().b14"></h2>
-          <p><span data-bind="text: $data.contractor.value"></span></p>
-          <h2><span data-bind="text: $root.lang().b15"></h2>
-          <p><span data-bind="text: $data.budget.value"></span></p>
-          <h2><span data-bind="text: $root.lang().b16"></h2>
-          <p><span data-bind="text: $data.address.value"></span></p>
-          <h2><span data-bind="text: $root.lang().b17"></h2>
-          <p><span data-bind="text: $data.beginDate.value"></span></p>
-          <h2><span data-bind="text: $root.lang().b18"></h2>
-          <p><span data-bind="text: $data.endDate.value"></span></p>
-          <h2><span data-bind="text: $root.lang().b19"></h2>
-	</div>
         <div data-bind="foreach: offerDetails">
         <table>
   	  <thead>
