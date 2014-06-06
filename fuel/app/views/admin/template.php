@@ -41,9 +41,11 @@
 	    <div class="menuBarItem">
 	    	<div class = "menuItemIcon ">
                  <?php #echo Asset::img('help.svg'); ?>
-                 <?php echo Html::anchor('admin/', Asset::img('house.svg', array('class'=>'menuItemIcon'))) ?>
+                 <?php echo Html::anchor('admin/'.'?lang='.$language, Asset::img('house.svg', array('class'=>'menuItemIcon'))) ?>
       		</div>
-    		<?php echo Html::anchor('admin', 'Dashboard') ?>
+      		<?php echo Config::set('language', $language);?>
+      		<?php Lang::load('general.json'); ?>
+    		<?php echo Html::anchor('admin'.'?lang='.$language, Lang::get("titleBar.dashboard")); ?>
     	</div>
 
 		<?php
@@ -58,10 +60,10 @@
 						<div class = "menuItemIcon ">
 	                 		<?php #echo Asset::img('help.svg'); 
 	                 		#echo $section_segment; ?>
-	                 		<?php echo Html::anchor('admin/'.$section_segment, Asset::img($section_segment.'.svg', 
+	                 		<?php echo Html::anchor('admin/'.$section_segment.'?lang='.$language, Asset::img($section_segment.'.svg', 
 	                 			array('class'=>'menuItemIcon'))) ?>
 	      				</div>
-	      				<?php echo Html::anchor('admin/'.$section_segment, $section_title) ?>
+	      				<?php echo Html::anchor('admin/'.$section_segment.'?lang='.$language, Lang::get("titleBar.".$section_segment)) ?>
 					</div>
 				</div>
 				<?php
@@ -74,7 +76,7 @@
                       <?php echo Html::anchor('admin/logout', Asset::img('logout.svg', 
                         array('class'=>'menuItemIcon'))) ?>
                 </div>
-                <?php echo Html::anchor('admin/logout', 'Logout') ?>
+                <?php echo Html::anchor('admin/logout', Lang::get('titleBar.logout')) ?>
           </div>
 		<!--
     	<div class="menuBarItem">
@@ -113,14 +115,14 @@
 		</div>
   -->
   
-	    <!-- <div  id = "langBar" >
-	        <a href="#" data-bind="click: changeLanguage.bind($data,'0')">
-	        	<?php echo Asset::img('spanish.png', array('class'=>'flag', 'data-bind'=>"css: { flagSelected: lang().lang == 'Spanish' }")); ?>
+	    <div  id = "langBar" >
+	        <a href="<?php echo '?lang=es';?>" >
+	        	<?php echo Asset::img('spanish.png', array('class'=>'flag')); ?>
 		</a>
-	        <a href="#" data-bind="click: changeLanguage.bind($data,'1')">
-	        	<?php echo Asset::img('english.png', array('class'=>'flag', 'data-bind'=>"css: { flagSelected: lang().lang == 'English' }")); ?>
+	        <a href="<?php echo '?lang=en';?>">
+	        	<?php echo Asset::img('english.png', array('class'=>'flag')); ?>
 		</a>
-	    </div> -->
+	    </div> 
 	    <div  id = "messageBar" >
 		
 	    </div>
@@ -142,12 +144,12 @@
 </div>
 <?php include('footer.php'); ?>
 	<div id="dialog-modal" data-bind="visible: false">
-		<h3>Credits for the images:</h3><br>
+		<h3><?php echo Lang::get('credits.image-credits');?></h3><br>
 
-		House by Murali Krishna from The Noun Project<br>
-		Sheep by Taras Makar from The Noun Project<br>
-		Yarn by Alexandr Cherkinsky from The Noun Project<br>
-		Question by John Chapman from The Noun Project<br>
+		<?php echo Lang::get('credits.house'); ?><br>
+		<?php echo Lang::get('credits.sheep'); ?><br>
+		<?php echo Lang::get('credits.yarn');?><br>
+		<?php echo Lang::get('credits.question'); ?><br>
 
 	</div>
 

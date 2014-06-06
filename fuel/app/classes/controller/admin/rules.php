@@ -33,6 +33,7 @@ class Controller_Admin_Rules extends Controller_Admin{
 		arsort($data['logos']);
 		arsort($data['logos2']);
 		$this->template->title = "Rules";
+		$this->template->language = Config::get('language');
 		$this->template->content = View::forge('admin/rules/index', $data);
 	}
 
@@ -40,6 +41,7 @@ class Controller_Admin_Rules extends Controller_Admin{
 	{
 		$data['rule'] = RuleEdit::find_rules($id);
 		$this->template->title = "Rule";
+		$this->template->language = Config::get('language');
 		$this->template->content = View::forge('admin/rules/view', $data);
 
 	}
@@ -47,6 +49,7 @@ class Controller_Admin_Rules extends Controller_Admin{
 	public function action_editor()
 	{
 		$this->template->title = "Rules";
+		$this->template->language = Config::get('language');
 		$this->template->content = View::forge('admin/rules/editor');
 	}
 
@@ -83,6 +86,7 @@ class Controller_Admin_Rules extends Controller_Admin{
 		}
 
 		$this->template->title = "Rules";
+		$this->template->language = Config::get('language');
 		$this->template->content = View::forge('admin/rules/create');
 
 	}
@@ -126,6 +130,7 @@ class Controller_Admin_Rules extends Controller_Admin{
 		}
 
 		$this->template->title = "Rules";
+		$this->template->language = Config::get('language');
 		$this->template->content = View::forge('admin/rules/edit');
 
 	}

@@ -8,6 +8,12 @@ class Controller_Admin extends Controller_Base
 	{
 		parent::before();
 
+		$lang = Input::get('lang');
+		if($lang=='es' || $lang=='en')
+		{
+			Config::set('language', $lang);
+		}
+
 		if (Request::active()->controller !== 'Controller_Admin' or ! in_array(Request::active()->action, array('login', 'logout')))
 		{
 			if (Auth::check())
@@ -67,6 +73,7 @@ class Controller_Admin extends Controller_Base
 		}
 
 		$this->template->title = 'Login';
+		$this->template->language = Config::get('language');
 		$this->template->content = View::forge('admin/login', array('val' => $val), false);
 	}
 
@@ -91,6 +98,7 @@ class Controller_Admin extends Controller_Base
 	public function action_index()
 	{
 		$this->template->title = 'Dashboard';
+		$this->template->language = Config::get('language');
 		$this->template->content = View::forge('admin/dashboard');
 	}
 

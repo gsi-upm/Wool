@@ -13,7 +13,7 @@ $(function() {
                 autoReposition: true,
                 show: { effect: 'clip', duration: 500 },
                 hide: { effect: 'slideUp', duration: 500 },
-                title: "Credits",
+                title: "Wool - GSI UPM",
                 width: 400, 
                 buttons: [{
                 	text: "Ok",

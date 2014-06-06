@@ -1,0 +1,21 @@
+{
+	"titleBar": {
+		"dashboard": "Inicio",
+		"channels": "Canales",
+		"rules": "Reglas",
+		"logout": "Salir"
+	},
+	"footer": {
+		"credits": "Créditos",
+		"page-render": "La página se ha renderizado en ",
+		"render-use": "y usando",
+		"memory": "de memoria"
+	},
+	"credits": {
+		"image-credits": "Créditos por las imágenes:",
+		"house": "House por Murali Krishna de The Noun Project",
+		"sheep": "Sheep por Taras Makar de The Noun Project",
+		"yarn": "Yarn por Alexandr Cherkinsky de The Noun Project",
+		"question": "Question por John Chapman de The Noun Project"
+	}
+}

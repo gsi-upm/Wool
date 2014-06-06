@@ -30,8 +30,8 @@ class Controller_Admin_Channels extends Controller_Admin {
 		// 	}
 		// }
 
-
 		$this->template->title = "Channels";
+		$this->template->language = Config::get('language');
 		$this->template->content = View::forge('admin/channels/index', $data);
 	}
 
@@ -41,6 +41,7 @@ class Controller_Admin_Channels extends Controller_Admin {
 		$channel['graph'] = $data['channel']['@graph'];
 
 		$this->template->title = "Channel";
+		$this->template->language = Config::get('language');
 		$this->template->content = View::forge('admin/channels/view', $channel);
 
 	}

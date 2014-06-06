@@ -5,7 +5,6 @@ class Controller_Editor extends Controller
 	public function action_index()
 	{
 		$data = array();
-		$data['thing'] = "Oly";
 		
 		// Assign current_user to the instance so controllers can use it
 		if (Config::get('auth.driver', 'Simpleauth') == 'Ormauth')
