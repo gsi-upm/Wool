@@ -1540,6 +1540,13 @@ height: 80px;
   width: auto;
   background: #FFFFFF;
   border-radius: 100px;
+  border: 1px solid #000;
+  display: inline-block;
+  float: center;
+  margin: 10px ;
+  border: 1px solid #B9B9B9;
+  box-shadow:inset 0 0 8px #bbb;
+  overflow: hidden;
 }
 
 .optionsView {
@@ -1688,4 +1695,21 @@ z-index:-100;
 .greenTab:active {
   position:relative;
   top:1px;
+}
+
+.channelInfo {
+  background-color: #19B95C;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  border: 1px solid #000;
+  box-shadow:inset 0 0 10px #000;
+}
+
+.channelInfoContent {
+  margin: 10px;
+}
+
+.mini-title {
+  float:left;
+  font-size: 1.5em;
 }

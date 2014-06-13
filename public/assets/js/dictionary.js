@@ -2,6 +2,7 @@ languages =
     [
         {
             lang: "Spanish",
+            langCode: "es",
 		a1: "demostrador job matching",
 		m1: "Búsqueda",
 		m2: "Candidatos",
@@ -95,6 +96,10 @@ languages =
 		t7: "Selecciona los datos",
 		s1: "CUANDO",
 		s2: "ENTONCES",
+		dashboard: "Inicio",
+		channels: "Canales",
+		rules: "Reglas",
+		logout: "Salir",
 		marg1: "20px",
 		marg2: "280px",
 		saveRule: "Guardar Regla",
@@ -141,6 +146,7 @@ languages =
         },
         {
             lang: "English",
+            langCode: "en",
 		a1: "job matching demonstrator.",
 		m1: "Search",
 		m2: "Candidates",
@@ -234,6 +240,10 @@ languages =
 		t7: "Choose the data",
 		s1: "WHEN...",
 		s2: "DO...",
+		dashboard: "Home",
+		channels: "Channels",
+		rules: "Rules",
+		logout: "Logout",
 		saveRule: "Save Rule",
 		cancelRule: "Cancel",
 		backToRules: "Back to rule index",

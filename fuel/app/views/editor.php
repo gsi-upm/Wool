@@ -47,7 +47,8 @@
                  <?php #echo Asset::img('help.svg'); ?>
                  <?php echo Html::anchor('admin/', Asset::img('house.svg', array('class'=>'menuItemIcon'))) ?>
           </div>
-        <?php echo Html::anchor('admin', 'Dashboard') ?>
+        <?php #echo Html::anchor('admin', 'Dashboard') ?>
+        <span data-bind="text: lang().dashboard"></span>
       </div>
 
     <?php
@@ -65,7 +66,9 @@
                       <?php echo Html::anchor('admin/'.$section_segment, Asset::img($section_segment.'.svg', 
                         array('class'=>'menuItemIcon'))) ?>
                 </div>
-                <?php echo Html::anchor('admin/'.$section_segment, $section_title) ?>
+                <?php #echo Html::anchor('admin/'.$section_segment, $section_title) ?>
+                <?php #echo $language; ?>
+                <span data-bind="text: lang().<?php echo $section_segment;?>"></span>
           </div>
         </div>
         <?php
@@ -99,7 +102,8 @@
                       <?php echo Html::anchor('admin/logout', Asset::img('logout.svg', 
                         array('class'=>'menuItemIcon'))) ?>
                 </div>
-                <?php echo Html::anchor('admin/logout', 'Logout') ?>
+                <?php #echo Html::anchor('admin/logout', 'Logout') ?>
+                <span data-bind="text: lang().logout"></span>
           </div>
     <?php endif;?>      
     

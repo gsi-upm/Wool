@@ -7,16 +7,20 @@
 	<thead>
 		<tr>
 			<th>If this</th>
-			<th>Description</th>
-			<th>Then that</th>
 			<th></th>
+			<th>Then that</th>
 			<th></th>
 			<th></th>
 		</tr>
 	</thead>
 	<tbody>
 <?php foreach ($rules as $rule): ?>		<tr>
-			<td><img class="droppable imageBox" src=<?php echo /*$logos[array_search($rule, $rules)]*/ $rule['ifthis']['logo'] ?> ></td>
+
+			<td><img class="imageBox" src=<?php echo /*$logos[array_search($rule, $rules)]*/ $rule['ifthis']['logo'] ?> ></td>
+
+			<td> <?php echo Asset::img('rules-arrow.png') ?>  </td>
+
+			<td><img class="imageBox" src=<?php echo /*$logos2[array_search($rule, $rules)]*/ $rule['thenthat']['logo'] ?> ></td>
 
 			<td>When 
 				<span class="text-Description"><?php echo $rule['ifthis']['dcterms:title'] ?></span>
@@ -33,8 +37,6 @@
 				endif; ?>
 
 			</td>
-
-			<td><img class="droppable imageBox" src=<?php echo /*$logos2[array_search($rule, $rules)]*/ $rule['thenthat']['logo'] ?> ></td>
 
 			<td>
 				<div class="optionsView">

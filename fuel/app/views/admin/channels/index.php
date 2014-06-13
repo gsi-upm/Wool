@@ -23,7 +23,7 @@
 			if($detail['@type'] == 'ewe:Channel'): ?>
 
 				<td><?php echo $detail['dcterms:title']; ?></td>
-				<td><img class="droppable imageBox" src=<?php echo $detail['foaf:logo'];?> ></img></td>
+				<td><img class="imageBox" src=<?php echo $detail['foaf:logo'];?> ></img></td>
 				<td><?php echo $detail['dcterms:description']; ?></td>
 
 			<?php endif;

@@ -18,7 +18,6 @@ class Controller_Editor extends Controller
 
 		// Set a global variable so views can use it
 		View::set_global('current_user', $this->current_user);
-
 		return View::forge('editor', $data);
 	}
 }
