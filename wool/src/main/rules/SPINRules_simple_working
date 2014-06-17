@@ -1,0 +1,10 @@
+CONSTRUCT {
+    ?action a ewe:Action .
+    ?action dcterms:title "Send me a chat" .
+    ?action dcterms:description "This Action will send a chat." .
+}
+WHERE {
+    ?event a ewe:Event .
+    ?event dcterms:title "Any new email" .
+    BIND (URI("http://gsi.es/action1") AS ?action) .
+}

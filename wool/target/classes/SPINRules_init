@@ -1,0 +1,10 @@
+CONSTRUCT {
+    ?action a <http://gsi.dit.upm.es/ontologies/ewe/channels/ns/Init> .
+    ?action <http://gsi.dit.upm.es/ontologies/ewe/channels/ns/Message> ?message .
+}
+WHERE {
+    ?event a <http://gsi.dit.upm.es/ontologies/ewe/ns/Event> .
+    ?event <http://gsi.dit.upm.es/ontologies/ewe/channels/ns/Fullname> ?name .
+    BIND ( URI("http://example.org/action") as ?action )
+    BIND( fn:concat(?name, " has initiated the SPIN Motor!") AS ?message )
+}

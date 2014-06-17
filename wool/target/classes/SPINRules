@@ -1,0 +1,10 @@
+CONSTRUCT {
+    ?action a <http://gsi.dit.upm.es/ontologies/ewe/ifttt/ns/SendMeAnSms> .
+    ?action <http://gsi.dit.upm.es/ontologies/ewe/ifttt/ns/Message> ?message .
+}
+WHERE {
+    ?event a <http://gsi.dit.upm.es/ontologies/ewe/ns/Event> .
+    ?event <http://gsi.dit.upm.es/ontologies/ewe/ifttt/ns/Fullname> ?name .
+    BIND ( URI("http://example.org/action") as ?action )
+    BIND( fn:concat(?name, " is now following you!") AS ?message )
+}
