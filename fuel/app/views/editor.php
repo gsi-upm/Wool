@@ -767,7 +767,7 @@
           <!-- ko foreach: $root.ifthisConfig['ewe:hasOutputParameter']() -->
             <div class="triggerBox outputBox" data-bind="attr: {'id': 'outputBox' + $index()}, click: $root.selectedOutput.bind($data, $index())">
               <p class="triggerEditor"><span style="font-weight: 900;" data-bind="text: $data['dcterms:title']()"></span></p>
-              <p class="triggerEditor"><span data-bind="text: $data['dcterms:description']() "></span></p>
+             <!--  <p class="triggerEditor"><span data-bind="text: 'dataaaa' "></span></p> -->
             </div>
           <!-- /ko -->
           </div>

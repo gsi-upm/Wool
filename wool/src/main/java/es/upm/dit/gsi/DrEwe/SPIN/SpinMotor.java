@@ -117,11 +117,7 @@ public class SpinMotor {
 		System.out.println("Inserting test event");
 		boolean result = SpinMotor.insertTestEvent(rule);
 		
-//		System.out.println("Running new inferences");
-//		runInferences();
-		long newInferences = newOntModel.size();
-		System.out.println(newInferences);
-		return true;
+		return result;
 	}
 	
 	private static void loadInitRule() {
@@ -229,7 +225,7 @@ public class SpinMotor {
 		
 		// Run inferences to test if the rule works 
 		runInferences();
-		
+		long newTriples = newOntModel.size();
 		
 		// Removes the event from the ontology model
 		ontModel.remove(myEvent, RDF.type, ontModel.getResource(event_ns));
@@ -238,10 +234,18 @@ public class SpinMotor {
 		
 		// Rerun the inferences. The result must be only the init action
 		runInferences();
+		long standardTriple = newOntModel.size();
 		
+		long checkTest = newTriples - standardTriple;
 		
 		eventsInserted++;
-		return true;
+		
+		if(checkTest > 0) {
+			System.out.println("------> Rule has been successfully inserted into the motor");
+			return true; 
+		}		
+		System.out.println("------> ERROR. Rule has NOT been inserted into the motor");
+		return false;
 	}
 	// Run inferences when a event has been inserted
 	private static void runInferences(){

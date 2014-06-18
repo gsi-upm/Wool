@@ -25,7 +25,7 @@ public class Interface {
 	public Response hello() {
 		Response response = new Response();
 		
-		SpinMotor.getMOTOR();
+//		SpinMotor.getMOTOR();
 		
 		response.setStatus("OK");
 		response.setDescription("Everything is OK");
@@ -64,8 +64,6 @@ public class Interface {
 			
 			boolean result = SpinMotor.insertNewRule(sparql);
 			
-			
-//			boolean result = spinMotor.insertRule(sparql, eventTitle, eventDescription);
 			if(!result) {
 				response.setStatus("SPIN Motore Error: RULE ERROR");
 				response.setDescription("The rule is not valid. It has not been included into SPIN Motor");
@@ -78,7 +76,7 @@ public class Interface {
 			return response;
 		}
 			
-		response.setStatus("Success");
+		response.setStatus("OK");
 		response.setDescription("Succes inserting the rule into SPIN Motor.");
 		return response;
 	}
