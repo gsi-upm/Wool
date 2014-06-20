@@ -6,6 +6,7 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
+			<th></th>
 			<th>If this</th>
 			<th></th>
 			<th>Then that</th>
@@ -15,6 +16,15 @@
 	</thead>
 	<tbody>
 <?php foreach ($rules as $rule): ?>		<tr>
+
+			<td><div class="optionsView">
+				<?php 
+				if($rule['deployed']): ?>
+					<p class="alert alert-success"><span class="text-Description">Activated</span></p>
+				<?php else:
+					echo Html::anchor('export/rule/'.$rule['_id'], 'Activate', array('class' => 'btn btn-primary')); 
+				endif;	?>
+			</div></td>
 
 			<td><img class="imageBox" src=<?php echo /*$logos[array_search($rule, $rules)]*/ $rule['ifthis']['logo'] ?> ></td>
 

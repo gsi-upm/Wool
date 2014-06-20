@@ -25,11 +25,14 @@ class RuleEdit extends \Model
 		// Returns the id of mongo if the rule has been succesfully saved,
 		// and false if not
 		$insert_id = $mongodb->insert('rules', $rule);
-		if($insert_id == false)
-		{
-			return false;
-		}
-		return true;
+		return $insert_id;
+	}
+
+	public static function modify_rule($id, $rule)
+	{
+		$mongodb = \Mongo_Db::instance();
+		$result = $mongodb->where(array("_id"=>new \MongoId($id)))->update('rules', $rule);
+		return $result;
 	}
 
 	public static function delete_rule($id)

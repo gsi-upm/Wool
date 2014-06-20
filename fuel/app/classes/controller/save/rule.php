@@ -26,7 +26,7 @@ class Controller_Save_Rule extends Controller
 					return Response::forge("ERROR. Previously created rule not found into server");
 				}
 
-				// Saves the useful info into the nuew rule and deletes the non useful data
+				// Saves the useful info into the new rule and deletes the non useful data
 				$value['created_at'] = $previous_rule['created_at'];
 				$value['last_edited_at'] = date('Y/m/d H:i:s');
 				unset($value['edited_ruleId']);
@@ -36,7 +36,8 @@ class Controller_Save_Rule extends Controller
 				$value['created_at'] = date('Y/m/d H:i:s');	
 			}
 
-			
+			// Adds the doployed parameter
+			$value['deployed'] = false;
 
 			$saved = RuleEdit::save_rule($value);
 			$saving_status = '';
@@ -49,15 +50,14 @@ class Controller_Save_Rule extends Controller
 				$saving_status = "ERROR. Rule is NOT saved";
 			}
 			$date = date('Y/m/d H:i:s');
+
 			$status = array(
 				'status' => $saving_status.' at '.$date ,
 				'saved' => $saved,
 			);
 
 			return Response::forge(json_encode($status));
-		}
-
-		
+		}	
 	}
 }
 ?>

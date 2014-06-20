@@ -836,7 +836,6 @@ $(document).ready(function () {
                 contentType: "application/json",
                 data: rule,
                 success: function(data){
-                    console.log(data)
                     var response = JSON.parse(data);
                     console.log(response.status);
                     self.savingFinished(response.saved);
