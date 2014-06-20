@@ -1720,3 +1720,22 @@ z-index:-100;
   border: 1px solid #000;
   box-shadow:inset 0 0 3px #000;
 }
+
+.dashboardBox {
+  margin: 40px;
+  font-size: 1.2em;
+  width: auto;
+  border-style: solid;
+  border-radius: 8px 8px 8px 8px; 
+  border-width: 8px 8px 8px 8px;
+  border-color: #66A67C;
+  box-shadow: 10px 10px 10px #000; 
+  background-color: #FFFFFF;
+}
+
+.dashboardTitle {
+  font-size: 4em; 
+  font-weight: bolder;
+  margin: 20px;
+  font-family: "helvetica-neue-lt-std-35-thin";
+}
