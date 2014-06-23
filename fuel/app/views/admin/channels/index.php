@@ -1,4 +1,7 @@
-<div class=" titleText"><strong>Channels</strong></div>
+<?php  
+echo Config::set('language', $language);
+Lang::load('channels.json'); ?>
+<div class=" titleText"><strong><?php echo Lang::get('index.title'); ?></strong></div>
 
 <?php #echo Html::anchor('editor', 'Add new Rule', array('class' => 'btn btn-success')); ?>
 
@@ -7,9 +10,9 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>Title</th>
-			<th>Logo</th>
-			<th>Description</th>
+			<th><?php echo lang::get('index.table_title');?></th>
+			<th><?php echo lang::get('index.table_logo');?></th>
+			<th><?php echo lang::get('index.table_description');?></th>
 			<th></th>
 		</tr>
 	</thead>
@@ -31,13 +34,14 @@
 		endforeach;
 		endif;
 	endforeach; ?>
-	<td><?php echo Html::anchor('admin/channels/view/'.$channel['_id'], 'View'); ?></td>
+	<td><?php echo Html::anchor('admin/channels/view/'.$channel['_id'].'?lang='.$language, Lang::get('index.table_view'), array('class' => 'btn btn-info')); ?></td>
 	</tr>
 <?php endforeach; ?>	</tbody>
 </table>
 
 <?php else: ?>
-<p>No Channels.</p>
+
+<p class="alert alert-info channelInfoContent"><?php echo lang::get('index.no_channels'); ?></p>
 
 <?php endif; ?><p>
 	

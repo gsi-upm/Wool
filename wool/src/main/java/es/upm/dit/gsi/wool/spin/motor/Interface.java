@@ -22,14 +22,22 @@ public class Interface {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/status")
 	public Response hello() {
 		Response response = new Response();
 		
-//		SpinMotor.getMOTOR();
+		boolean test = SpinMotor.checkMotor();
+		if(test) {
+			response.setStatus("OK");
+			response.setDescription("SPIN Motor is running normally");
+			return response;
+		} else {
+			response.setStatus("WARNING");
+			response.setDescription("SPIN Motor is NOT running normally");
+			return response;
+		}
 		
-		response.setStatus("OK");
-		response.setDescription("Everything is OK");
-		return response;
+		
 	}
 	
 	@GET

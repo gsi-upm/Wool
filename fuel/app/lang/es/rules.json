@@ -1,0 +1,13 @@
+{
+	"index": {
+		"title": "Reglas",
+		"add_button": "Crear nueva regla",
+		"when": "Cuando",
+		"do": "Entonces",
+		"activated": "Activada",
+		"activate": "Activar",
+		"edit": "Editar",
+		"delete": "Borrar",
+		"no_rules": "No hay Reglas"
+	}
+}

@@ -5,6 +5,8 @@ class Controller_Save_Rule extends Controller
 {
 	public function action_index()
 	{
+		$current_user = Model_User::find_by_username(Auth::get_screen_name());
+
 		if(Input::Method() == 'POST')
 		{
 			// Saves the received JSON in the request
@@ -38,6 +40,10 @@ class Controller_Save_Rule extends Controller
 
 			// Adds the doployed parameter
 			$value['deployed'] = false;
+
+			// Saves the user that has created the rule
+			$value['user'] = $current_user->username;
+
 
 			$saved = RuleEdit::save_rule($value);
 			$saving_status = '';

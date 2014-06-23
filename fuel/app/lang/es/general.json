@@ -9,7 +9,8 @@
 		"credits": "Créditos",
 		"page-render": "La página se ha renderizado en ",
 		"render-use": "y usando",
-		"memory": "de memoria"
+		"memory": "de memoria",
+		"logged": "Registrado como "
 	},
 	"credits": {
 		"image-credits": "Créditos por las imágenes:",

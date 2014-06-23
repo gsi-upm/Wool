@@ -1,0 +1,6 @@
+{
+	"spin-motor": {
+		"check_status_endpoint": "http://homer.gsi.dit.upm.es:8080/wool/spin/motor/status",
+		"deploy_rule_endpoint": "http://homer.gsi.dit.upm.es:8080/wool/spin/motor"
+	}
+}

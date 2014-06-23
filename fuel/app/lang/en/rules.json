@@ -1,0 +1,13 @@
+{
+	"index": {
+		"title": "Rules",
+		"add_button": "Create new Rule",
+		"when": "When",
+		"do": "Do",
+		"activated": "Activated",
+		"activate": "Activate",
+		"edit": "Edit",
+		"delete": "Delete",
+		"no_rules": "No Rules"
+	}
+}

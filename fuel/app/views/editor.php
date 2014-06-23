@@ -645,7 +645,14 @@
 		<div class="gsiLogo" title="Grupo de Sistemas Inteligentes" ></div>
 		</a>
 		</a>
+    <div class="footerInfo">
+      <?php 
+      if(isset($current_user->username)): ?>
+      <span data-bind="text: $root.lang().logged + '<?php echo $current_user->username?>'"></span>
+      <?php endif;?>
+    </div>
 </div>
+
 
 <div id="blackDIV" data-bind="visible: help()"></div>
 <div id="blackCont" data-bind="visible: help(), click: activateHelp, clickBubble: false">

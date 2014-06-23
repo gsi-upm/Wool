@@ -1,15 +1,17 @@
-<div class=" titleText"><strong>Rules</strong></div>
+<?php echo Config::set('language', $language);
+    Lang::load('rules.json'); ?>
+<div class=" titleText"><strong><?php echo Lang::get('index.title'); ?></strong></div>
 <br>
-<?php echo Html::anchor('editor', 'Add new Rule', array('class' => 'btn btn-success')); ?>
+<?php echo Html::anchor('editor', Lang::get('index.add_button'), array('class' => 'btn btn-success btn-lg')); ?>
 <br>
 <?php if ($rules): ?>
 <table class="table table-striped">
 	<thead>
 		<tr>
 			<th></th>
-			<th>If this</th>
+			<th><?php echo Lang::get('index.when'); ?></th>
 			<th></th>
-			<th>Then that</th>
+			<th><?php echo Lang::get('index.do'); ?></th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -20,9 +22,9 @@
 			<td><div class="optionsView">
 				<?php 
 				if($rule['deployed']): ?>
-					<p class="alert alert-success"><span class="text-Description">Activated</span></p>
+					<p class="alert alert-success"><span class="text-Description"><?php echo Lang::get('index.activated'); ?></span></p>
 				<?php else:
-					echo Html::anchor('export/rule/'.$rule['_id'], 'Activate', array('class' => 'btn btn-primary')); 
+					echo Html::anchor('export/rule/'.$rule['_id'], Lang::get('index.activate'), array('class' => 'btn btn-primary btn-lg')); 
 				endif;	?>
 			</div></td>
 
@@ -51,8 +53,9 @@
 			<td>
 				<div class="optionsView">
 				
-				<?php echo Html::anchor('editor#/editor/'.$rule['_id'], 'Edit'); ?> |
-				<?php echo Html::anchor('admin/rules/delete/'.$rule['_id'], 'Delete', array('onclick' => "return confirm('Are you sure?')")); ?>
+				<?php echo Html::anchor('editor#/editor/'.$rule['_id'], Lang::get('index.edit'), array('class'=>'btn btn-primary channelInfoContent')); ?> 
+				<?php echo Html::anchor('admin/rules/delete/'.$rule['_id'], Lang::get('index.delete'), 
+					array('onclick' => "return confirm('Are you sure?')", 'class'=>'btn btn-danger')); ?>
 				</div>
 			</td>		
 		</tr>
@@ -60,9 +63,9 @@
 </table>
 
 <?php else: ?>
-<p>No Rules.</p>
+<p class="alert alert-info channelInfoContent"><?php echo lang::get('index.no_rules'); ?></p>
 
 <?php endif; ?><p>
-	<?php echo Html::anchor('editor', 'Add new Rule', array('class' => 'btn btn-success')); ?>
+<?php echo Html::anchor('editor', Lang::get('index.add_button'), array('class' => 'btn btn-success btn-lg')); ?>
 
 </p>

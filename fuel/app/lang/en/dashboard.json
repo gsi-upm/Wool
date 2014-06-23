@@ -2,5 +2,14 @@
 	"presentationBox": {
 		"description": "A web editor of event driven automation rules",
 		"docsButton": "Check the project"
+	},
+
+	"statusBox": {
+		"title": "SPIN Motor status",
+		"checkButton": "Check status",
+		"description-OK": "SPIN Motor is running normally",
+		"description-WARNING": "SPIN Motor is not running with normality",
+		"description-DANGER": "Unable to connect to SPIN Motor"
 	}
+
 }

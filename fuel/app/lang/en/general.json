@@ -9,7 +9,8 @@
 		"credits": "Credits",
 		"page-render": "Page rendered in ",
 		"render-use": "and using",
-		"memory": "of memory"
+		"memory": "of memory",
+		"logged": "Logged as "
 	},
 	"credits": {
 		"image-credits": "Credits for the images:",

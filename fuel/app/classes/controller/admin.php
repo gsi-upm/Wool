@@ -18,7 +18,7 @@ class Controller_Admin extends Controller_Base
 		{
 			if (Auth::check())
 			{
-				$admin_group_id = Config::get('auth.driver', 'Simpleauth') == 'Ormauth' ? 6 : 100;
+				$admin_group_id = Config::get('auth.driver', 'Simpleauth') == 'Ormauth' ? 6 : 100||1;
 				if ( ! Auth::member($admin_group_id))
 				{
 					Session::set_flash('error', e('You don\'t have access to the admin panel'));
@@ -27,7 +27,7 @@ class Controller_Admin extends Controller_Base
 			}
 			else
 			{
-				Response::redirect('admin/login');
+				Response::redirect('/');
 			}
 		}
 	}
@@ -68,6 +68,7 @@ class Controller_Admin extends Controller_Base
 				else
 				{
 					$this->template->set_global('login_error', 'Fail');
+					Response::redirect('admin');
 				}
 			}
 		}
@@ -97,9 +98,38 @@ class Controller_Admin extends Controller_Base
 	 */
 	public function action_index()
 	{
-		$this->template->title = 'Dashboard';
+		Config::load('wool_config.json');
+		$data = array();
+		$curl = Request::forge( Config::get('spin-motor.check_status_endpoint'), 'curl');
+		try 
+		{
+			
+			$curl->set_method('get');
+			$curl->execute();
+
+		}
+		catch (Exception $ex) 
+		{}
+
+		$response = $curl->response()->body;
+
+		if($response['status'] == "OK")
+		{
+			$data['status'] = "OK";
+		} elseif($response['status'] == "WARNING") 
+		{
+			$data['status'] = "WARNING";
+		} else 
+		{
+			$data['status'] = "UNKNOWN";
+		}
+
+		Lang::load('general.json');
+
+		$data['language'] = Config::get('language');
+		$this->template->title = Lang::get('titleBar.dashboard');
 		$this->template->language = Config::get('language');
-		$this->template->content = View::forge('admin/dashboard');
+		$this->template->content = View::forge('admin/dashboard', $data);
 	}
 
 }

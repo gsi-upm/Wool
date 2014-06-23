@@ -4,9 +4,17 @@ use \Model\Channel;
 
 class Controller_Admin_Rules extends Controller_Admin{
 
+	public function before()
+	{
+		parent::before();
+		$this->current_user = Model_User::find_by_username(Auth::get_screen_name());
+	}
+
 	public function action_index()
 	{
-		$data['rules'] = RuleEdit::index_rules();
+		$username = $this->current_user->username;
+		// $data['rules'] = RuleEdit::index_rules();
+		$data['rules'] = RuleEdit::find_by_user($username);
 		$data['logos'] = array();
 		$data['logos2'] = array();
 
@@ -32,7 +40,11 @@ class Controller_Admin_Rules extends Controller_Admin{
 		sort($data['rules']);
 		arsort($data['logos']);
 		arsort($data['logos2']);
-		$this->template->title = "Rules";
+
+		$data['language'] = Config::get('language');
+		Lang::load('general.json');
+
+		$this->template->title = Lang::get('titleBar.rules');
 		$this->template->language = Config::get('language');
 		$this->template->content = View::forge('admin/rules/index', $data);
 	}

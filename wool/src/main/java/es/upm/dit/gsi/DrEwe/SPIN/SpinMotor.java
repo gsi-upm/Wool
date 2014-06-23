@@ -96,7 +96,7 @@ public class SpinMotor {
 				// Insert event and run init inferences
 				System.out.println("Inserting init event");
 				insertInitEvent();
-				System.out.println("Running init inferences");
+//				System.out.println("Running init inferences");
 //				runInferences();
 				
 				
@@ -108,6 +108,20 @@ public class SpinMotor {
 			}
 		}
 		System.out.println("The SPIN Motor has been already created");
+	}
+	
+	// Checks the status of the SPIN Motor
+	public static boolean checkMotor() {
+		getMOTOR();
+		System.out.println("Running check inferences");
+		newOntModel.removeAll();
+		runInferences();
+		long checkTriples = newOntModel.size();
+		if(checkTriples > 0) {
+			System.out.println("SPIN Motor is running normally");
+			return true;
+		}
+		return false;
 	}
 	
 	public static boolean insertNewRule(String rule) {

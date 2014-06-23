@@ -11,6 +11,13 @@ class RuleEdit extends \Model
 		return $result;
 	}
 
+	public static function find_by_user($username)
+	{
+		$mongodb = \Mongo_Db::instance();
+		$result = $mongodb->where(array("user"=>$username))->get('rules');
+		return $result;
+	}
+
 	public static function find_rules($id)
 	{
 		$mongodb = \Mongo_Db::instance();

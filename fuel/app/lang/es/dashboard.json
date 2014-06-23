@@ -2,5 +2,13 @@
 	"presentationBox": {
 		"description": "Editor web de reglas automatizadas disparadas por eventos",
 		"docsButton": "Echa un vistazo"
+	},
+
+	"statusBox": {
+		"title": "Estado de SPIN Motor",
+		"checkButton": "Comprobar estado",
+		"description-OK": "SPIN Motor está funcionando con normalidad",
+		"description-WARNING": "SPIN Motor no está funcionando con normalidad",
+		"description-DANGER": "No se puede conectar a SPIN Motor"
 	}
 }

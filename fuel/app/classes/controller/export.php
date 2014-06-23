@@ -72,7 +72,8 @@ class Controller_Export extends Controller_Rest
 	// Makes a POST request to the SPIN Motor endpoint. In the request parameters is the SPARQL query
 	private function make_request($sparql) 
 	{
-		$curl = Request::forge( 'http://homer.gsi.dit.upm.es:8080/wool/spin/motor', 'curl');
+		Config::load('wool_config.json');
+		$curl = Request::forge( Config::get('spin-motor.deploy_rule_endpoint'), 'curl');
 		$curl->set_method('post');
 		$curl->set_params(array('type'=>"SPARQL", 'sentence'=>$sparql));
 		$curl->execute();

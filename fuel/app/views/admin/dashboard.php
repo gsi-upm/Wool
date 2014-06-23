@@ -6,7 +6,31 @@
 	<p><a class="btn btn-primary btn-lg" href="https://github.com/gsi-upm/Wool"><?php echo Lang::get('presentationBox.docsButton');?></a></p>
 	</div>
 </div>
-<div class="row">
+
+<div class="dashboardBox statusBox">
+	<div style="margin:30px;">
+	<h1 class="dashboardTitle littleTitle"><?php echo Lang::get('statusBox.title'); ?></h1>
+	<?php switch($status){
+		case "OK": ?>
+			<p class="alert alert-success"><?php echo Lang::get('statusBox.description-OK'); ?></p>
+			<?php break;
+		case "WARNING": ?>
+			<p class="alert alert-warning"><?php echo Lang::get('statusBox.description-WARNING'); ?></p>
+			<?php break;
+		case "UNKNOWN": ?>
+			<p class="alert alert-danger"><?php echo Lang::get('statusBox.description-DANGER'); ?></p>
+			<?php break;
+	} ?>
+
+
+	
+	<p>
+		<!-- <a class="btn btn-primary btn-lg" href="https://github.com/gsi-upm/Wool"><?php echo Lang::get('presentationBox.docsButton');?></a> -->
+		<?php echo Html::anchor('admin'.'?lang='.$language, Lang::get('statusBox.checkButton'), array('class' => 'btn btn-primary btn-lg')); ?>
+	</p>
+	</div>
+</div>
+<!-- <div class="row">
 	<div class="col-md-4">
 		<h2>Get Started</h2>
 		<p>The controller generating this page is found at <code>APPPATH/classes/controller/admin.php</code>.</p>
@@ -27,4 +51,4 @@
 			<li><a href="http://fuelphp.com/contribute/issue-tracker">Issue Tracker</a></li>
 		</ul>
 	</div>
-</div>
+</div> -->

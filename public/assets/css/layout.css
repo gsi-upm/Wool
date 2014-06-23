@@ -1722,9 +1722,9 @@ z-index:-100;
 }
 
 .dashboardBox {
+  width: 800px;
   margin: 40px;
   font-size: 1.2em;
-  width: auto;
   border-style: solid;
   border-radius: 8px 8px 8px 8px; 
   border-width: 8px 8px 8px 8px;
@@ -1738,4 +1738,15 @@ z-index:-100;
   font-weight: bolder;
   margin: 20px;
   font-family: "helvetica-neue-lt-std-35-thin";
+}
+
+.littleTitle {
+  font-size: 2em; 
+  font-weight: bolder;
+  margin: 10px;
+  font-family: "helvetica-neue-lt-std-35-thin";
+}
+
+.statusBox {
+  text-align: left;
 }

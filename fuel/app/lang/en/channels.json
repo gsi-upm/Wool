@@ -1,0 +1,20 @@
+{
+	"index": {
+		"title": "Channels",
+		"table_title": "Title",
+		"table_logo": "Logo",
+		"table_description": "Description",
+		"table_view": "View",
+		"no_channels": "No channels"
+	},
+	"view": {
+		"title": "Title:",
+		"summary": "Summary:",
+		"actions": "Actions",
+		"events": "Events",
+		"table_title": "Title",
+		"table_description": "Description",
+		"back": "Back"
+	}
+}
+	
