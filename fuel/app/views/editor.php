@@ -455,6 +455,10 @@
 
   <div class="channelTabs">
     <div class="spaceButtons" data-bind="foreach: spaces">
+      <!-- ko if: $index() == 0 -->
+      <div><button class="greenTab" data-bind="attr: {id: 'allSpaces'}, text: $root.lang().allChannels, click: $root.selectSpace.bind($data, ''), 
+          css: {greenTabSelected: $root.selectedTab() == $data}"></button></div>
+      <!-- /ko -->
       <div><button class="greenTab" data-bind="attr: {id: $data}, text: $root.lang()[$data], click: $root.selectSpace.bind($data, $data), 
           css: {greenTabSelected: $root.selectedTab() == $data}"></button></div>
     </div>
