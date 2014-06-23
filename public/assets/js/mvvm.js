@@ -63,6 +63,7 @@ $(document).ready(function () {
             var shouldDisplay = valueAccessor();
             shouldDisplay ? $(element).fadeIn() : $(element).fadeOut();
         } 
+
     };
     
     templateJson = []
@@ -685,7 +686,6 @@ $(document).ready(function () {
         };
         $(document).ajaxStart(function () {});
         $(document).ajaxStart(function () {});
-        
         // self.doSearch = function (entityIndex) {
         //     self.loading('true');
         //     $.blockUI();
@@ -1006,6 +1006,7 @@ $(document).ready(function () {
 
             if(container == self.ifthisConfig) {
                 self.selectedLeftTrigger(true);
+                OnloadFunction();
             }
 
             // Saves to ifthisConfig the name of the selected trigger in all the available languages
@@ -1220,21 +1221,6 @@ $(document).ready(function () {
                 resize: function(envent, ui){
                     console.log("resize event")
                     $("#dialog-modal").dialog("widget").animate(ui.size);
-                }
-            });
-        }
-
-
-        self.testbackend = function() {
-            $.ajax({
-                type: 'get',
-                url: "http://homer.gsi.dit.upm.es:8080/wool/rest/spin",
-                data: {},
-                dataType: 'json',
-                ContentType: 'text/html; charset=UTF-8',
-                success: function(allData) {
-                    console.log(allData)
-
                 }
             });
         }

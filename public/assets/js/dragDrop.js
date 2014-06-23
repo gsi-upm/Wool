@@ -109,6 +109,7 @@ function OnloadFunction() {
             self.containerRight.container()[dropIndex].containerLogo('');
             self.cleanConfiguration(self.thenthatConfig);
         }
+        OnloadFunction();
         /*
         self.currentSearch.result()[dropIndex].entityLogo('');
         self.currentSearch.changed('true');

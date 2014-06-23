@@ -214,7 +214,7 @@
 
         <div data-bind="foreach: $root.containerRight.container">
    <div class="droppable droppableCompany company droppableContainerRight" class="class2" id="droppable2" data-bind="visible: $root.page() > 0, attr: {'name': $data, 'index': $index+1}, 
-      css: {  'selected': $root.currentEntity() == $index(), 'draggableContainerRight': $data.containerName() != '', 'draggableEmpty': $data.containerName() == ''}">
+      css: {  'stateDisabled': $root.ifthisConfig['@id']() == '', 'selected': $root.currentEntity() == $index(), 'draggableContainerRight': $data.containerName() != '', 'draggableEmpty': $data.containerName() == ''}">
 
            
      <!-- ko if: $data.containerName() == '' -->
