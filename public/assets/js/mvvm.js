@@ -815,7 +815,11 @@ $(document).ready(function () {
 
         // Called when a tab is selected
         self.selectSpace = function(space) {
-            self.filter(space);
+            if(space == 'allSpaces') {
+                self.filter('');
+            } else {
+                self.filter(space);
+            }
             self.selectedTab(space);
         }
 
