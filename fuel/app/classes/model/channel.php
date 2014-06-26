@@ -34,6 +34,22 @@ class Channel extends \Model
 		return $result;
 	}
 
+	public static function get_channel_space($id_channel)
+	{
+		$mongodb = \Mongo_Db::instance();
+		$channels = $mongodb->get('channels');
+
+		foreach ($channels as $channel => $channel_value) {
+			$channel_data = $channels[$channel]['@graph'][count($channels[$channel]['@graph'])-1];
+			if($channel_data['@id'] == $id_channel)
+			{
+				$result = $channel_data['space'];
+			}
+		}
+		return $result;
+	}
+
+
 // 	public static function find_rules($id)
 // 	{
 // 		$mongodb = \Mongo_Db::instance();

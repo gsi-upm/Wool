@@ -1,0 +1,1 @@
+triggerEventEndPoint = "http://homer.gsi.dit.upm.es/wool/public/event";

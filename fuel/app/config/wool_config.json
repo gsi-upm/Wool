@@ -1,6 +1,9 @@
 {
 	"spin-motor": {
 		"check_status_endpoint": "http://homer.gsi.dit.upm.es:8080/wool/spin/motor/status",
-		"deploy_rule_endpoint": "http://homer.gsi.dit.upm.es:8080/wool/spin/motor"
+		"deploy_rule_endpoint": "http://homer.gsi.dit.upm.es:8080/wool/spin/motor",
+		"insert_event_endpoint": "http://homer.gsi.dit.upm.es:8080/wool/spin/motor/event",
+		"rest_rdf_translator_endpoint": "http://rdf-translator.appspot.com/convert/xml/json-ld/content",
+		"init_action_URI": "http://example.org/action"
 	}
 }

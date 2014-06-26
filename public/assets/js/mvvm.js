@@ -829,6 +829,13 @@ $(document).ready(function () {
             var ifthis = ko.toJSON(self.ifthisConfig);
             var thenthat = ko.toJSON(self.thenthatConfig);
             var rule = {};
+            /*
+                If the tow selected channels are located in the same space,
+                we define the rules as located in that space
+            */
+            if(true) {
+
+            }
             rule['ifthis'] = self.ifthisConfig;
             rule['thenthat'] = self.thenthatConfig;
             rule['ifthisOutputs'] = self.outputs();
@@ -1007,6 +1014,7 @@ $(document).ready(function () {
             container.inputform(self.inputform.data());
             self.inputform.data('');
             container['from_channel'](self.selectedChannelId());
+            // container['space'] = 
 
             if(container == self.ifthisConfig) {
                 self.selectedLeftTrigger(true);
@@ -1117,6 +1125,9 @@ $(document).ready(function () {
                 self.outputs().push(0);
                 return;
             }
+
+            console.log(self.thenthatConfig['ewe:hasInputParameter']().length);
+            
             self.selectingOutput(true);
 
             $("#dialog-output").dialog({
@@ -1244,6 +1255,7 @@ $(document).ready(function () {
                 dataType: 'json',
                 ContentType: 'text/html; charset=UTF-8',
                 success: function(allData) {
+                    console.log(allData)
                     parsedJSON = allData.channels;
                     dataParsed = parsedJSON;
 
@@ -1788,6 +1800,7 @@ $(document).ready(function () {
                 }, 300);
                 self.filter("");
                 self.focusBar(true);
+                self.selectSpace('allSpaces');
             });
 
             this.get('#/editor/:ruleId', function(){
@@ -1820,6 +1833,7 @@ $(document).ready(function () {
                 }, 300);
                 self.filter("");
                 self.focusBar(true);
+                self.selectSpace('allSpaces');
             });
         }).run('wool/public/editor#/editor'); //END SAMMY
         // </CLIENT SIDE ROUTES>

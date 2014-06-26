@@ -1,0 +1,20 @@
+{
+	"index": {
+		"mainTitle": "Virtual GSI"
+	},
+	"inputform": {
+		"input": "Parameter",
+		"alert": "Parameter must not be empty"
+	},
+	"dni": {
+		"dni_entered": "has inserted the DNI"
+	},
+
+	"statusBox": {
+		"title": "SPIN Motor status",
+		"checkButton": "Check status",
+		"description-OK": "SPIN Motor is running normally",
+		"description-WARNING": "SPIN Motor is not running with normality",
+		"description-DANGER": "Unable to connect to SPIN Motor"
+	}
+}

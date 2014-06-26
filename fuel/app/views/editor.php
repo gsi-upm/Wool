@@ -30,9 +30,9 @@
     <div id="container">
         <div id="header">
 	    <div id = "logo">
-		<a href="#" data-bind="click: $root.changeURL.bind($data,'#/editor')">
-                <div class="epistemeLogo titleText">rule <span class="colorGreen">editor</span></div>
-                </a>
+      <div class="epistemeLogo titleText">rule 
+        <span class="colorGreen">editor<?php echo Asset::img('ewe_logo.svg', array('class'=>'menuItemIcon')) ?></span>
+      </div>
 		<br class="clear" />
             </div>
 

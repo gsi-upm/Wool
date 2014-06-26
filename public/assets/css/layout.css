@@ -116,7 +116,7 @@ body {
   position:absolute; 
   margin-left:250px;
   width: 100%;
-  max-width: 620px;
+  max-width: 800px;
   min-width: 620px;
   text-align:center;
 }
@@ -349,7 +349,7 @@ z-index:-100;
 .dragContainer{
   width:880px;
   margin: 0 auto;
-  margin-left: 280px;
+  /*margin-left: 20%;*/
   text-align: center;
   display: flex;
 }
@@ -1427,7 +1427,7 @@ height: 80px;
 .titleText {
   font-family: "helvetica-neue-lt-std-35-thin";
   font-size: 32px;
-  padding-top: 27px;
+  padding-top: 10px;
   color: black;
 }
 
@@ -1749,4 +1749,119 @@ z-index:-100;
 
 .statusBox {
   text-align: left;
+}
+
+.presentationBox {
+  width: 900px;
+  margin-left: 0%;
+  background-image:url('../img/ewe_logo.svg');
+  background-repeat: no-repeat;
+  background-position: 96% 50%;
+}
+
+.fieldBox {
+  width: 1000px;
+  background-position: 96% 2%;
+}
+
+.fieldEvent {
+  float: left;
+  margin: 8px;
+  /*margin-left: -122%;*/
+  font-family: "helvetica-neue-lt-std-35-thin";
+}
+.imageBoxField {
+  height: 100px;
+}
+
+.fieldEventButton {
+
+  /*margin: 10px;*/
+  background: white;
+  border: white;
+  border-radius: 10000;
+  border-style: solid;
+  border-radius: 8px 8px 8px 8px; 
+  border-width: 3px 3px 3px 3px;
+  border-color: #00B800;
+  box-shadow: 5px 5px 5px #000; 
+}
+
+.mapGSIOff {
+  margin: 10px;
+  /*width: 800px;*/
+  height: 500px;
+  clear: both;
+  /*background-color: blue;*/
+  background-image:url('../img/gsilab-floorplane-1.svg') ;
+  background-repeat: no-repeat;
+  background-size: contain; 
+  background-position: center;
+} 
+.mapGSIOn {
+  margin: 10px;
+  /*width: 800px;*/
+  height: 500px;
+  clear: both;
+  /*background-color: blue;*/
+  background-image:url('../img/gsilab-floorplane-2.svg') ;
+  background-repeat: no-repeat;
+  background-size: contain; 
+  background-position: center;
+}
+.dni {
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  float: left;
+  position: absolute;
+  top: 34%;
+  right: 60%;
+  border-style: solid;
+  border-radius: 8px 8px 8px 8px; 
+  border-width: 3px 3px 3px 3px;
+  border-color: #00B800;
+  background-image: url('../img/dni.png');
+  background-repeat: no-repeat;
+  background-size: contain; 
+  background-position: center;
+}
+.tv {
+  float: left;
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  top: 35%;
+  right: 15%;
+  border-style: solid;
+  border-radius: 8px 8px 8px 8px; 
+  border-width: 3px 3px 3px 3px;
+  border-color: #00B800;
+  background-image: url('../img/tv.jpg');
+  background-repeat: no-repeat;
+  background-size: contain; 
+  background-position: center;
+  background-color: white;
+}
+.tvText {
+  margin-top: 5%;
+  color: white;
+  font-family: "helvetica-neue-lt-std-35-thin";
+  font-weight: bolder;
+}
+
+.bot {
+  float:left;
+  width: 180px;
+  height: 160px;
+  /*margin-left: 60%;
+  margin-top: 30%;*/
+  position: absolute;
+  top: 68%;
+  right: 26%;
+  border-style: solid;
+  border-radius: 8px 8px 8px 8px; 
+  border-width: 3px 3px 3px 3px;
+  border-color: #00B800;
+  background-color: white;
 }

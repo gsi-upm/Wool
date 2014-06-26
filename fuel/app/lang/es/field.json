@@ -1,0 +1,20 @@
+{
+	"index": {
+		"mainTitle": "Simulador GSI"
+	},
+	"inputform": {
+		"input": "Parámetro",
+		"alert": "El parámetro no puede estar vacío"
+	},
+	"dni": {
+		"dni_entered": "ha insertado el DNI"
+	},
+
+	"statusBox": {
+		"title": "Estado de SPIN Motor",
+		"checkButton": "Comprobar estado",
+		"description-OK": "SPIN Motor está funcionando con normalidad",
+		"description-WARNING": "SPIN Motor no está funcionando con normalidad",
+		"description-DANGER": "No se puede conectar a SPIN Motor"
+	}
+}

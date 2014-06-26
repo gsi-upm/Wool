@@ -17,7 +17,7 @@
     'underscore.js', 'knockout-2.1.0.js', 'knockout.mapping.js', 'sammy-latest.min.js', 'knockout-kendo.min.js', 'jquery.confirm.js', 'jquery.blockUI.js')); ?>
 
     <!-- javascript custom-->
-    <?php echo Asset::js(array('manager.js')); ?>
+    <?php echo Asset::js(array('rulemanager-config.js', 'manager.js')); ?>
 
 	<script>
 		$(function(){ 
@@ -31,9 +31,10 @@
 <div id="container">
 	<div id="header">
 	    <div id = "logo">
-		<a href="#">
-                <div class="epistemeLogo titleText">rule <span class="colorGreen">editor</span></div>
-                </a>
+            <div class="epistemeLogo titleText">rule 
+            	<span class="colorGreen">editor<?php echo Asset::img('ewe_logo.svg', array('class'=>'menuItemIcon')) ?></span>
+            </div>
+
 		<br class="clear" />
             </div>
               

@@ -1,12 +1,17 @@
 package es.upm.dit.gsi.DrEwe.SPIN;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Properties;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.Field;
 
 import org.drools.repository.utils.IOUtils;
@@ -110,7 +115,93 @@ public class SpinMotor {
 		System.out.println("The SPIN Motor has been already created");
 	}
 	
-	// Checks the status of the SPIN Motor
+	/**
+	 * <p></p>
+	 * 
+	 * @param 
+	 * @param
+	 * 
+	 */
+	public static String insertEvent(String event, HashMap<String, String> parameters) {
+		createMotor();
+		
+		System.out.println("Inserting new event: " + event);
+		
+		//Creates the resource using the event that is being inserted
+		Resource newEvent = ontModel.createResource(event);
+//		
+		Iterator<String> iteratorKey = parameters.keySet().iterator();		
+		try {
+			/* 
+			 * Reflects the EWEIfttt fields, searching for the fields that are
+			 * Property -Property class is from the Jena API- 
+			 */
+			Field[] fields = EWEChannels.class.getDeclaredFields();
+			while(iteratorKey.hasNext()) {
+				String parameter = iteratorKey.next();
+				System.out.println("The key is: " + parameter);
+				System.out.println("The value is :" + parameters.get(parameter));
+		    	for (Field field : fields) {
+		    		if(field.getType().getSimpleName().equals("Property")) {
+		    			// If the field is a Property, downcasts the object into a Property
+		    			Object property = field.get(EWEChannels.class);
+		    			Property pro = (Property) property;
+		    			String localName = pro.getLocalName();
+		    			if (parameter.equals(localName)) {
+		    				// If the parameter name is equal to the parameter to be added,
+		    				// adds the parameter into the event
+		    				System.out.println("Adding to " + pro.getLocalName() + " the parameter <" + parameters.get(parameter) + ">");
+		    				newEvent.addProperty(pro, parameters.get(parameter));
+		    			}
+		    		}
+		    	}	
+		    }
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		
+		// Adds the event into the ontology model
+		newEvent.addProperty(RDF.type, ontModel.getResource(event));
+		
+		// Run inferences to test if the rule works 
+		runInferences();
+		long newTriples = newOntModel.size();
+
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		PrintStream ps = new PrintStream(baos);
+		PrintStream ontoRDF = System.out;
+		System.setOut(ps);
+		newOntModel.write(System.out, "RDF/XML-ABBREV");
+		System.out.flush();
+		System.setOut(ontoRDF);
+		String actionsXML = baos.toString();
+		
+		// Removes the event from the ontology model
+		newEvent.removeProperties();
+		ontModel.remove(newEvent, RDF.type, ontModel.getResource(event));
+		// Removes all the resources form the ontology that is used for the inferences
+		newOntModel.removeAll();
+		
+		// Rerun the inferences. The result must be only the init action
+		runInferences();
+		long standardTriple = newOntModel.size();
+		
+		long checkTest = newTriples - standardTriple;
+		
+		eventsInserted++;
+		
+		if(checkTest > 0) {
+			System.out.println("------> The event has triggered actions");
+			return actionsXML; 
+		}		
+		System.out.println("------> ERROR. The event has not triggered anny action");
+		return null;
+	}
+	
+	/*
+	 *  Checks the status of the SPIN Motor
+	 */
 	public static boolean checkMotor() {
 		getMOTOR();
 		System.out.println("Running check inferences");
@@ -150,7 +241,7 @@ public class SpinMotor {
 		}
 	}
 	
-	public static void loadRule(String rule) {
+	protected static void loadRule(String rule) {
 		String eventsNs = properties.getProperty("events-ns");
 		Resource originalEvent = ontModel.getResource(eventsNs);
 		
@@ -204,11 +295,12 @@ public class SpinMotor {
 		String event_ns = getEvent(rule);
 		
 		// Creates the resource using the event namespace
-		Resource myEvent = ontModel.createResource(event_ns + "1231231");
+		Resource myEvent = ontModel.createResource(event_ns);
 		
 		// Adds the event parameter. This is event is a test, so also is the parameter
 		String parameter = getParameter(rule);
 		String testParam = "test parameter";
+		Property propertyToDelete = null;
 		try {
 			/* 
 			 * Reflects the EWEIfttt fields, searching for the fields that are
@@ -226,6 +318,7 @@ public class SpinMotor {
 	    				// adds the parameter into the event
 	    				System.out.println("Adding to " + pro.getLocalName() + " the parameter <" + testParam + ">");
 	    				myEvent.addProperty(pro, testParam);
+	    				propertyToDelete = pro;
 	    			}
 	    		}
 	    	}
@@ -242,7 +335,9 @@ public class SpinMotor {
 		long newTriples = newOntModel.size();
 		
 		// Removes the event from the ontology model
-		ontModel.remove(myEvent, RDF.type, ontModel.getResource(event_ns));
+		myEvent.removeProperties();
+		ontModel.removeAll(myEvent, RDF.type, ontModel.getResource(event_ns));
+		ontModel.removeAll(myEvent, propertyToDelete, ontModel.getResource(event_ns));
 		// Removes all the resources form the ontology that is used for the inferences
 		newOntModel.removeAll();
 		
@@ -269,6 +364,8 @@ public class SpinMotor {
 		System.out.println("========================");
 		
 	}
+	
+
 	
 	/* 
 	* 	Gets the namespace of the event type 

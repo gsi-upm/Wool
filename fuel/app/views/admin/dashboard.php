@@ -1,5 +1,5 @@
 <?php Lang::load('dashboard.json') ?>
-<div class="dashboardBox">
+<div class="dashboardBox presentationBox">
 	<div style="margin:30px;">
 	<h1 class="dashboardTitle">Wool</h1>
 	<p class="channelInfoContent"><?php echo Lang::get('presentationBox.description'); ?></p>

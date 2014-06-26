@@ -37,6 +37,7 @@ class Controller_Channel extends Controller_Rest
 			array_push($channels_ids, $channels[$index]['@graph'][$position]['@id']);
 				
 		}
+
 		$response = array(
 			'number_channels' => $count, 
 			'id_channels' => $channels_ids,

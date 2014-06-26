@@ -66,6 +66,6 @@
 <p class="alert alert-info channelInfoContent"><?php echo lang::get('index.no_rules'); ?></p>
 
 <?php endif; ?><p>
-<?php echo Html::anchor('editor', Lang::get('index.add_button'), array('class' => 'btn btn-success btn-lg')); ?>
+<?php echo Html::anchor('editor/?lang='.$language, Lang::get('index.add_button'), array('class' => 'btn btn-success btn-lg')); ?>
 
 </p>

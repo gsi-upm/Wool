@@ -3,6 +3,7 @@
 		"dashboard": "Home",
 		"channels": "Channels",
 		"rules": "Rules",
+		"field": "Test field",
 		"logout": "Logout"
 	},
 	"footer": {

@@ -30,11 +30,14 @@ public class EWEChannels {
     public static final Resource SendMeAnSms = m_model.createResource( "http://gsi.dit.upm.es/ontologies/ewe/channels/ns/SendMeAnSms" );
     public static final Resource GSIBot = m_model.createResource( "http://gsi.dit.upm.es/ontologies/ewe/channels/ns/GSIBot" );
     public static final Resource SendAEmail = m_model.createResource( "http://gsi.dit.upm.es/ontologies/ewe/channels/ns/SendAEmail" );
+    public static final Resource SendAChat = m_model.createResource( "http://gsi.dit.upm.es/ontologies/ewe/channels/ns/SendAChat" );
+    public static final Resource TV = m_model.createResource( "http://gsi.dit.upm.es/ontologies/ewe/channels/ns/TV" );
 
     /** <p>EWE Events</p>**/
     public static final Resource NewFollower = m_model.createResource( "http://gsi.dit.upm.es/ontologies/ewe/channels/ns/NewFollower" );
     public static final Resource GSILight = m_model.createResource( "http://gsi.dit.upm.es/ontologies/ewe/channels/ns/GSILight" );
     public static final Resource Time = m_model.createResource( "http://gsi.dit.upm.es/ontologies/ewe/channels/ns/Time" );
+    public static final Resource eDNI = m_model.createResource( "http://gsi.dit.upm.es/ontologies/ewe/channels/ns/eDNI" );
     
     public static final Resource NewStarredEmail = m_model.createResource( "http://gsi.dit.upm.es/ontologies/ewe/channels/ns/NewStarredEmail" );
     public static final Resource AnyNewEmail = m_model.createResource( "http://gsi.dit.upm.es/ontologies/ewe/channels/ns/AnyNewEmail" );
