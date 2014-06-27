@@ -22,7 +22,7 @@
     
     <link rel="icon" href="favicon.ico" type="image/x-icon"> 
     
-	<title>GSI Rule Editor</title>
+	<title>Wool Rule Editor</title>
 
 </head>
 
@@ -38,7 +38,7 @@
 
 
 
-	    <div  id = "menuBar" data-bind="visible: page() < 3">
+	    <div  id = "menuBar">
 
 	   
 
@@ -133,10 +133,10 @@
 
 
 
-<div id="main" class="mainContainer" data-bind="visible: page() < 3">
+<div id="main" class="mainContainer">
 
 <!-- DROPPABLES -->
-<div class="dropContainer" data-bind="css: { offerContainer: page() == 0 }" >
+<div class="dropContainer"  >
     <!-- COMPOSER -->
     <!-- ko if: option() == 0 -->
     <div>
@@ -150,7 +150,7 @@
     <!-- <img class="img" data-bind="attr: { 'src': lang().i1 }"> -->
     <div id="droppableElementsLeft" data-bind="visible: true && !savingFinished()" >
         <div data-bind="foreach: $root.containerLeft.container">
-	 <div class="droppable droppableCompany company droppableContainerLeft" class="class2" id="droppable1" data-bind="visible: $root.page() > 0, attr: {'name': $data, 'index': $index},  
+	 <div class="droppable droppableCompany company droppableContainerLeft" class="class2" id="droppable1" data-bind="attr: {'name': $data, 'index': $index},  
       css: { 'stateDisabled': false, 'selected': $root.currentEntity() == $index(), 'draggableContainerLeft': $data.containerName() != '', 'draggableEmpty': $data.containerName() == ''}">
 
 	   <!-- ko if: $data.containerName() == '' -->
@@ -172,7 +172,7 @@
            <!-- /ko -->
 	 </div>
 	</div>  
-    <div class="lines" id="lines" data-bind="if: page() == 1">
+    <div class="lines" id="lines">
 		   <img class="img" data-bind="attr: { 'src': lang().i1 }, 
         visible: $root.ifthisConfig['@id']() == ''">
     
@@ -213,7 +213,7 @@
     <div id="droppableElementsRight" data-bind="visible: true && !savingFinished()" >
 
         <div data-bind="foreach: $root.containerRight.container">
-   <div class="droppable droppableCompany company droppableContainerRight" class="class2" id="droppable2" data-bind="visible: $root.page() > 0, attr: {'name': $data, 'index': $index+1}, 
+   <div class="droppable droppableCompany company droppableContainerRight" class="class2" id="droppable2" data-bind="attr: {'name': $data, 'index': $index+1}, 
       css: {  'stateDisabled': $root.ifthisConfig['@id']() == '', 'selected': $root.currentEntity() == $index(), 'draggableContainerRight': $data.containerName() != '', 'draggableEmpty': $data.containerName() == ''}">
 
            
@@ -236,7 +236,7 @@
            <!-- /ko -->
    </div>
   </div>  
-    <div class="lines" id="lines" data-bind="if: page() == 1">
+    <div class="lines" id="lines">
       <img class="img" data-bind="attr: { 'src': lang().i1 }, 
         visible: $root.thenthatConfig['@id']() == '' && $root.ifthisConfig['@id']() != ''">
     </div>
@@ -300,7 +300,7 @@
 <!-- SEARCH EDITOR -->
 <div id="searchEditor" class="searchEditorContainer" data-bind="visible: page() == 0 && status() == 1">
 <!-- ko if: $root.option() == 0 -->
-<div class="searchDescription">
+<!-- <div class="searchDescription">
     <div class="searchDescriptionContainer">
       <div id="logoContainer"><img data-bind="attr: { 'src': './images/offers/' + $root.currentSearch.logo() + '.png' }"></img></div>
       <span class="filterName" ><span data-bind="text: lang().name"></span></span>
@@ -310,7 +310,7 @@
       <span class="filterName" ><span data-bind="text: lang().logo"></span></span>
       <select data-bind="options: availableLogos, value: $root.currentSearch.logo"></select>
     </div>
-</div>
+</div> -->
 <!-- /ko -->
 <div class="searchEntities">
 <!-- ko with: $root.currentSearch.result -->
@@ -366,33 +366,34 @@
     <!-- Filtros SOLR -->
     <div data-bind="foreach: $data.solr">
     <div class="filter" data-bind="visible: $data.name() != 'hidden'">
-    <span data-bind="if: $data.field() == 'Province'">
+    <!-- <span data-bind="if: $data.field() == 'Province'">
       <span class="filterName" data-bind="text: $root.lang().province"></span>
       <input class="solrInput" data-bind="kendoComboBox: { data: $root.Province, value: $root.selectedProvince }" />
       <a class="greenButton" data-bind="click: $root.addSolrFilter.bind($data, $data.values, $root.selectedProvince)">+</a>
       <a class="filterInfo blueButton" data-bind="click: $root.addSolrFilter.bind($data, $data.values, $root.selectedType),attr: { 'title': $root.lang().provinceHelp}">?</a>
     </span>
-    <span data-bind="if: $data.field() == 'Type'">
+ -->    
+   <!--  <span data-bind="if: $data.field() == 'Type'">
       <span class="filterName" data-bind="text: $root.lang().type"></span>
       <input class="solrInput" data-bind="kendoComboBox: { data: $root.Type, value: $root.selectedType }" />
       <a class="greenButton" data-bind="click: $root.addSolrFilter.bind($data, $data.values, $root.selectedType)">+</a>
       <a class="filterInfo blueButton" data-bind="click: $root.addSolrFilter.bind($data, $data.values, $root.selectedType),attr: { 'title': $root.lang().typeHelp}">?</a>
-    </span>
-    <span data-bind="if: $data.field() == 'Description'">
+    </span> -->
+   <!--  <span data-bind="if: $data.field() == 'Description'">
       <span class="filterName" data-bind="text: $root.lang().freeText"></span>
       <input class="solrInput k-input" type="text" data-bind="value: $root.selectedDescription, valueUpdate: 'afterkeydown', attr: { 'placeholder': $root.lang().typePlaceHolder }">
       <a class="greenButton" data-bind="click: $root.addSolrFilter.bind($data, $data.values, $root.selectedDescription)">+</a>
       <a class="filterInfo blueButton" data-bind="click: $root.addSolrFilter.bind($data, $data.values, $root.selectedType),attr: { 'title': $root.lang().descriptionHelp}">?</a>
     </span>
-    
+     -->
     <!-- Nuevo filtro SOLR: Posibilidad de viajar-->
-    <span data-bind="if: $data.field() == 'Travel'">
+   <!--  <span data-bind="if: $data.field() == 'Travel'">
       <span class="filterName" data-bind="text: $root.lang().travel"></span>
       <input class="solrInput" data-bind="kendoComboBox: { data: $root.Travel, value: $root.selectedTravel}" />
       <a class="greenButton" data-bind="click: $root.addSolrFilter.bind($data, $data.values, $root.selectedTravel)">+</a>
       <a class="filterInfo blueButton" data-bind="click: $root.addSolrFilter.bind($data, $data.values, $root.selectedType),attr: { 'title': $root.lang().travelHelp}">?</a>
     </span>
-    
+     -->
     
       <!-- Filtros SOLR añadidos -->
       <ul id="breadcrumbs-four" data-bind="foreach: $data.values">
@@ -410,7 +411,7 @@
   <a  class="greenButton" href="#" data-bind="click: $root.selectSearch.bind($data,'start')"><span data-bind="text: lang().RETURN"></span></a>
   <a  class="greenButton" href="#" data-bind="click: $root.doSaveJSON"><span data-bind="text: lang().SAVE"></span></a>
   <!-- /ko -->
-  <a  class="blueButton" href="#" data-bind="attr: {'href': '#/composer/' + $root.currentSearch.id() + '/entity/'+$root.currentEntity()}"><span data-bind="text: lang().SEARCH"></span></a>
+  <!-- <a  class="blueButton" href="#" data-bind="attr: {'href': '#/composer/' + $root.currentSearch.id() + '/entity/'+$root.currentEntity()}"><span data-bind="text: lang().SEARCH"></span></a> -->
 </div>
 </div>
 <!-- \SEARCH EDITOR -->

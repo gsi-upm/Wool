@@ -358,7 +358,7 @@ z-index:-100;
   border-radius: 5px;
   background-color: #E6E6E6;
   display: inline-block;
-  width:750px;
+  width:600px;
   position:relative;
   padding-bottom: 40px;
   margin-bottom: 20px;
@@ -505,13 +505,13 @@ background-size: 25px 25px;
   opacity: 1;
 }
 .offer .draggableText{
-  background: #0099ff;
+  background: #00B800;
 }
 
 .draggableText{
   width: 126px; 
   height:16px;
-  background:#0099ff;
+  background:#00B800;
   color:#fff;
   padding: 2px;
   font-size: 12px;
@@ -568,7 +568,7 @@ text-align: center;
 #resultsNumberBar{
 /*margin-top: 30px;*/
 text-align: left;
-margin-left: 70px;
+margin-left: 17%;
 }
 
 #filterBar{
@@ -1505,7 +1505,7 @@ height: 80px;
     border-radius: 4px;
     box-shadow: inset 1px 1px 2px #ddd8dc;
     background-color: #fff; 
-    background: url(../img/gsi_logo.png) no-repeat right center white;
+    background: url(../img/wool_logo.png) no-repeat right top white;
 }
 
 .containerDescription {
@@ -1646,16 +1646,16 @@ z-index:-100;
 }
 .greenTab {
         cursor:pointer;
-  -moz-box-shadow:inset 0px 1px 0px 0px #088A08;
-  -webkit-box-shadow:inset 0px 1px 0px 0px #088A08;
-  box-shadow:inset 0px 1px 0px 0px #088A08;
-  background-color:#04B404;
+  -moz-box-shadow:inset 0px 1px 0px 0px #04B486;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #04B486;
+  box-shadow:inset 0px 1px 0px 0px #04B486;
+  background-color:#04B486;
   -moz-border-radius:6px;
   -webkit-border-radius:6px;
   border-radius:10px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  border:1px solid #088A08;
+  border:1px solid #04B486;
   display:inline-block;
   color:#e6e6e6;
   font-family:arial;
@@ -1668,16 +1668,16 @@ z-index:-100;
 }
 .greenTabSelected {
   cursor:pointer;
-  -moz-box-shadow:inset 0px 1px 0px 0px #04B486;
-  -webkit-box-shadow:inset 0px 1px 0px 0px #04B486;
-  box-shadow:inset 0px 1px 0px 0px #04B486;
-  background-color:#04B486;
+  -moz-box-shadow:inset 0px 1px 0px 0px #00B800;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #00B800;
+  box-shadow:inset 0px 1px 0px 0px #00B800;
+  background-color:#00B800;
   -moz-border-radius:6px;
   -webkit-border-radius:6px;
   border-radius:10px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  border:1px solid #04B486;
+  border:1px solid #00B800;
   display:inline-block;
   color:#fff;
   font-family:arial;

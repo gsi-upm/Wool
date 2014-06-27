@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title><?php echo $title; ?></title>
+	<link rel="icon" href="/wool/public/favicon.ico" type="image/x-icon"> 
 	<?php echo Asset::css('bootstrap.css'); ?>
 	<?php echo Asset::js(array(
 		'http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js',

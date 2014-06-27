@@ -27,29 +27,29 @@ class Controller_Admin_Field extends Controller_Admin
 				array_push($deployed, $rules[$key]);
 			}
 		}
-
+		$located = $deployed;
 		// Selects only the rules located in the GSILab
-		foreach ($rules as $key => $value) {
-			$rule_channel_id = $value['ifthis']['from_channel'];
-			$rule_channel_id2 = $value['thenthat']['from_channel'];
-			$space_channel1 = '';
-			$space_channel2 = '';
-			if($rule_channel_id != '')
-			{
-				$space_channel1 = Channel::get_channel_space($rule_channel_id);
-			}
-			if($rule_channel_id2 != '')
-			{
-				$space_channel2 = Channel::get_channel_space($rule_channel_id2);
-			}
-			if ($space_channel1 == $space_channel2) 
-			{
-				if($space_channel1 == "located/lab_gsi")
-				{
-					array_push($located, $rules[$key]);
-				}
-			}
-		}
+		// foreach ($rules as $key => $value) {
+		// 	$rule_channel_id = $value['ifthis']['from_channel'];
+		// 	$rule_channel_id2 = $value['thenthat']['from_channel'];
+		// 	$space_channel1 = '';
+		// 	$space_channel2 = '';
+		// 	if($rule_channel_id != '')
+		// 	{
+		// 		$space_channel1 = Channel::get_channel_space($rule_channel_id);
+		// 	}
+		// 	if($rule_channel_id2 != '')
+		// 	{
+		// 		$space_channel2 = Channel::get_channel_space($rule_channel_id2);
+		// 	}
+		// 	if ($space_channel1 == $space_channel2) 
+		// 	{
+		// 		if($space_channel1 == "located/lab_gsi")
+		// 		{
+		// 			array_push($located, $rules[$key]);
+		// 		}
+		// 	}
+		// }
 
 		// Selects only one event of each type
 		foreach ($located as $key => $value) {

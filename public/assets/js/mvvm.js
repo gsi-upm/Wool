@@ -68,7 +68,7 @@ $(document).ready(function () {
     
     templateJson = []
     templateSkills = []
-    templateProvinces = []
+    // templateProvinces = []
     templateTypes = []
     templateProvenances = ["gsi", "vulka", "Episteme"]
     templateSearches = {
@@ -239,66 +239,66 @@ $(document).ready(function () {
         }
     }
 
-    templateEntity = {
-        "id": 2,
-        "entityName": "",
-        "entityLogo": "",
-        "provenance": "gsi",
-        "isSemantic": "true",
-        "semantic": [],
-        "solr": [{
-                "name": "hidden",
-                "field": "Provenance",
-                "type": "comboBox",
-                "values": ["gsi"]
-            }, {
-                "name": "province",
-                "field": "Province",
-                "type": "autoComplete",
-                "values": []
-            }, {
-                "name": "type",
-                "field": "Type",
-                "type": "comboBox",
-                "values": []
-            }, {
-                "name": "freeText",
-                "field": "Description",
-                "type": "inputText",
-                "values": []
-            }
-        ]
-    }
-    templateProvenanceFilterInes = {
-        "name": "hidden",
-        "field": "Provenance",
-        "type": "comboBox",
-        "values": ["gsi"]
-    }
-    templateProvenanceFilterVulka = {
-        "name": "hidden",
-        "field": "Provenance",
-        "type": "comboBox",
-        "values": ["vulka"]
-    }
-    templateProvincesFilter = {
-        "name": "province",
-        "field": "Province",
-        "type": "autoComplete",
-        "values": []
-    }
-    templateTypesFilter = {
-        "name": "type",
-        "field": "Type",
-        "type": "comboBox",
-        "values": []
-    }
-    templateFreeTextFilter = {
-        "name": "freeText",
-        "field": "Description",
-        "type": "inputText",
-        "values": []
-    }
+    // templateEntity = {
+    //     "id": 2,
+    //     "entityName": "",
+    //     "entityLogo": "",
+    //     "provenance": "gsi",
+    //     "isSemantic": "true",
+    //     "semantic": [],
+    //     "solr": [{
+    //             "name": "hidden",
+    //             "field": "Provenance",
+    //             "type": "comboBox",
+    //             "values": ["gsi"]
+    //         }, {
+    //             "name": "province",
+    //             "field": "Province",
+    //             "type": "autoComplete",
+    //             "values": []
+    //         }, {
+    //             "name": "type",
+    //             "field": "Type",
+    //             "type": "comboBox",
+    //             "values": []
+    //         }, {
+    //             "name": "freeText",
+    //             "field": "Description",
+    //             "type": "inputText",
+    //             "values": []
+    //         }
+    //     ]
+    // }
+    // templateProvenanceFilterInes = {
+    //     "name": "hidden",
+    //     "field": "Provenance",
+    //     "type": "comboBox",
+    //     "values": ["gsi"]
+    // }
+    // templateProvenanceFilterVulka = {
+    //     "name": "hidden",
+    //     "field": "Provenance",
+    //     "type": "comboBox",
+    //     "values": ["vulka"]
+    // }
+    // templateProvincesFilter = {
+    //     "name": "province",
+    //     "field": "Province",
+    //     "type": "autoComplete",
+    //     "values": []
+    // }
+    // templateTypesFilter = {
+    //     "name": "type",
+    //     "field": "Type",
+    //     "type": "comboBox",
+    //     "values": []
+    // }
+    // templateFreeTextFilter = {
+    //     "name": "freeText",
+    //     "field": "Description",
+    //     "type": "inputText",
+    //     "values": []
+    // }
     AppViewModel = function () {
         self = this;
         var limit = "505";
@@ -344,7 +344,7 @@ $(document).ready(function () {
         self.selectedSkill = ko.observable("");
         self.Provenance = ko.observableArray(templateProvenances);
         self.selectedProvenance = ko.observable(templateProvenances[0]);
-        self.Province = ko.observableArray(templateProvinces);
+        // self.Province = ko.observableArray(templateProvinces);
         self.selectedProvince = ko.observable("");
         self.selectedDescription = ko.observable("");
 
@@ -500,27 +500,27 @@ $(document).ready(function () {
                     $(this).animate({
                         opacity: value
                     }, 200);
-                    if (index == 0) $(this).find(".companyMedal").addClass('gold');
-                    if (index == 1) $(this).find(".companyMedal").addClass('silver');
-                    if (index == 2) $(this).find(".companyMedal").addClass('bronze');
-                    if (index < 15) {
-                        $(this).hide();
-                        $(this).delay(stallFor).fadeIn();
-                    }
+                    // if (index == 0) $(this).find(".companyMedal").addClass('gold');
+                    // if (index == 1) $(this).find(".companyMedal").addClass('silver');
+                    // if (index == 2) $(this).find(".companyMedal").addClass('bronze');
+                    // if (index < 15) {
+                    //     $(this).hide();
+                    //     $(this).delay(stallFor).fadeIn();
+                    // }
                 });
             } else {
-                $('.semanticCompanies').each(function (index) {
-                    $(this).animate({
-                        opacity: '1'
-                    }, 200);
-                    if (index == 0) $(this).find(".companyMedal").removeClass('gold');
-                    if (index == 1) $(this).find(".companyMedal").removeClass('silver');
-                    if (index == 2) $(this).find(".companyMedal").removeClass('bronze');
-                    if (index < 15) {
-                        $(this).hide();
-                        $(this).fadeIn();
-                    }
-                });
+                // $('.semanticCompanies').each(function (index) {
+                //     $(this).animate({
+                //         opacity: '1'
+                //     }, 200);
+                //     if (index == 0) $(this).find(".companyMedal").removeClass('gold');
+                //     if (index == 1) $(this).find(".companyMedal").removeClass('silver');
+                //     if (index == 2) $(this).find(".companyMedal").removeClass('bronze');
+                //     if (index < 15) {
+                //         $(this).hide();
+                //         $(this).fadeIn();
+                //     }
+                // });
             }
         }
 
