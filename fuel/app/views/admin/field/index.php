@@ -2,7 +2,9 @@
 echo Config::set('language', $language);
 Lang::load('field.json');
 ?>
-<div class=" titleText"><strong><?php echo Lang::get('index.mainTitle'); ?></strong></div>
+<div class=" titleText"><strong><?php echo Lang::get('index.mainTitle'); ?></strong>
+	<?php echo Asset::img('gsi_logo.png');?>
+</div>
 
 <div class="dashboardBox presentationBox fieldBox">
 
@@ -18,7 +20,11 @@ Lang::load('field.json');
 		</button>
 	</div>
 <?php }?>
+
 <div id="map" class="mapGSIOff">
+	<div id="warning">
+		<p class="alert alert-danger"><?php echo Lang::get('warning');?></p>
+	</div>
 
 	<div class="dni" >
 	 	<img id="dniImage">

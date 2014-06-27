@@ -43,6 +43,17 @@ class Controller_Event extends Controller_Rest
 			// $request['param1value'] = 'this is a test parameter';
 			$result = $this->make_SPIN_Motor_request($request);
 
+
+			// Checks the response: searches if there are triggered actions
+			if(!isset($result['description'])) {
+				$response = array(
+					'status' => 'rule_manager_no_actions',
+					'description' => 'No new actions have been triggered',
+				);
+				return Response::forge(json_encode($response));
+			}
+
+
 			$response = $this->make_translator_request($result['description']);
 			$json_response = json_decode($response, true);
 

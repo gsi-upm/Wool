@@ -75,6 +75,7 @@ $(function() {
         $(".tv").fadeOut();
         $(".bot").fadeOut();
         $(".dni").fadeOut();
+        $("#warning").fadeOut();
         self.lightOn(false);
         self.outputMessage('');
         self.n_outputs('');
@@ -122,36 +123,6 @@ $(function() {
                 break;
             }
         }
-
-        // for (var i = 1; i < nActions+1; i++) {
-        //     var actionID = actions[i]['@type'][0];
-        //     var message = false;
-        //     for(property in actions[i]) {
-        //         if(property == self.Message) {
-        //             message = true;
-        //         }
-        //     }
-        //     switch(actionID) {
-        //         case "http://gsi.dit.upm.es/ontologies/ewe/channels/ns/TV":
-        //             console.log("TV has triggered");
-        //             if(message) {
-        //                 var property = actions[i][self.Message][0]['@value'];
-        //                 self.tvMessage(property);
-        //             } else {
-        //                 self.tvMessage('GSI');
-        //             }
-        //         break;
-        //         case "http://gsi.dit.upm.es/ontologies/ewe/channels/ns/GSIBot":
-        //             console.log("GSIBot has triggered");
-        //             if(message) {
-        //                 var property = actions[i][self.Message][0]['@value'];
-        //                 self.bot(property);
-        //             } else {
-        //                 self.bot("Hello!");
-        //             }
-        //         break;
-        //     }
-        // };
         self.interval = setInterval(function(){
             console.log("Interval expired");
             self.fadeOut();
@@ -244,7 +215,14 @@ $(function() {
                 success: function(data) {
                     console.log(data)
                     // var action =
-                    ko.mapping.fromJS(data, self.newAction);
+                    if(data['status'] != undefined) {
+                        $("#warning").fadeIn();
+                        self.interval = setInterval(function(){
+                            console.log("Interval expired");
+                            self.fadeOut();
+                        }, 3000);
+                        return;
+                    }
 
                     self.newActionTriggered(data);
 
@@ -256,6 +234,7 @@ $(function() {
     $(".dni").hide();
     $(".tv").hide();
     $(".bot").hide();
+    $("#warning").hide();
 
 }
 
