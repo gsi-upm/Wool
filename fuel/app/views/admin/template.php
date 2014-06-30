@@ -55,6 +55,7 @@
 			foreach($files as $file)
 			{
 				$section_segment = $file->getBasename('.php');
+				if($section_segment == 'field'){continue;}
 				$section_title = Inflector::humanize($section_segment);
 				?>
 				<div class="menuBarItem">
@@ -71,6 +72,15 @@
 				<?php
 			}
 		?>
+		<div class="menuBarItem">
+			<div class = "menuItemIcon ">
+         		<?php echo Html::anchor('admin/field?lang='.$language, Asset::img('field.svg', 
+         			array('class'=>'menuItemIcon'))) ?>
+			</div>
+				<?php echo Html::anchor('admin/field?lang='.$language, Lang::get("titleBar.field")) ?>
+				
+		</div>
+
 		 <div class="menuBarItem">
             <div class = "menuItemIcon ">
                       <?php #echo Asset::img('help.svg'); ?>
