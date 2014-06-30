@@ -56,6 +56,7 @@
       foreach($files as $file)
       {
         $section_segment = $file->getBasename('.php');
+        if($section_segment == 'field'){continue;}
         $section_title = Inflector::humanize($section_segment);
         ?>
         <div class="menuBarItem">
@@ -74,6 +75,15 @@
         <?php
       }
     ?>
+
+    <div class="menuBarItem">
+      <div class = "menuItemIcon ">
+            <?php echo Html::anchor('admin/field', Asset::img('field.svg', 
+              array('class'=>'menuItemIcon'))) ?>
+      </div>
+        <span data-bind="text: lang().field"></span>
+        
+    </div>
 
     <div  class = "menuBarItem" data-bind="css: { inactive: status() < -1, selected: help()}">
       <a  href="https://github.com/gsi-upm/Wool/wiki">
