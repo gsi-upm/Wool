@@ -15,7 +15,6 @@ import org.json.JSONArray;
 import org.w3c.dom.Document;
 
 import es.upm.dit.gsi.wool.spin.motor.Response;
-import es.upm.dit.gsi.DrEwe.SPIN.SpinMotor;
 
 @Path("/motor")
 public class Interface {
