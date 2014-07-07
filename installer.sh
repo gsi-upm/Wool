@@ -6,7 +6,7 @@ cd ~
 mkdir core
 git clone https://github.com/fuel/core.git
 cd core
-rm .git 
+rm -rf .git 
 cd ..
 cp -r core WOOL_DIR
 exit
