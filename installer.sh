@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Installing Wool..."
+echo "...Installing Wool..."
 WOOL_DIR=$(pwd)
 echo $WOOL_DIR
 cd ~
